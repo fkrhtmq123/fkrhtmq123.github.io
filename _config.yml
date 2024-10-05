@@ -5,8 +5,8 @@ logo: /hcz-jekyll-blog/static/img/avatar.png
 github: https://github.com/fkrhtmq123
 about: Server developer
 
-baseurl: "https://fkrhtmq123.github.io/"
-url: "https://fkrhtmq123.github.io/"
+baseurl: "https://fkrhtmq123.github.ios"
+url: "https://fkrhtmq123.github.io"
 
 allowsearch: true
 

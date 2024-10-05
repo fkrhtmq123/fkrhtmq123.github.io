@@ -1,8 +1,8 @@
 [
 	{
 		"name": "AWS EC2에 linux에 Nakama설치",
-		"image": "assets/go-nakama-start.png",
-		"url": "#",
+		"image": "go-nakama-start.png",
+		"url": "",
 		"date": "Oct 2024",
 		"tags": ["Go","Nakama", "AWS", "Linux"]
 	}
