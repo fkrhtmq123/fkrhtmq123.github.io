@@ -5,5 +5,12 @@
 		"url": "tech/2024/10/05/aws-docker.html",
 		"date": "Oct 2024",
 		"tags": ["Go","Nakama", "AWS", "Linux"]
+	},
+	{
+		"name": "Test Page",
+		"image": "go-nakama-start.png",
+		"url": "others/2016/06/04/test-page.html",
+		"date": "Jan 2016",
+		"tags": ["Go"]
 	}
 ]
