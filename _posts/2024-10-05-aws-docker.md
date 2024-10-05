@@ -28,21 +28,21 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 </br>
 1. Docker패키지 설치
 
-```cmd
+```sh
 sudo yum install -y docker
 ```
 
 </br>
 2. Docker서비스 시작
 
-```cmd
+```sh
 sudo service docker start
 ```
 
 </br>
 3. 서버 부팅 시 서비스 시작
 
-```cmd
+```sh
 sudo systemctl enable docker
 ```
 
@@ -51,7 +51,7 @@ sudo systemctl enable docker
 
 (``sudo``를 사용하지 않고 명령어를 입력하기 위해서)
 
-```cmd
+```sh
 sudo usermod -aG docker user
 
 // 변경 사항 적용
@@ -62,28 +62,28 @@ newgrp docker
 <h1>Go에 Nakama설치 및 docker설정</h1>
 1.Go 프로젝트를 만들기 위해 폴더를 작성
 
-```cmd
+```sh
 mkidr go-nakam-test
 cd go-nakama-test
 ```
 
 2.```go.mod``` 초기화
 
-```cmd
+```sh
 go mod init project-name
 ```
 
 3.nakama-common을 설치
 go는 1.22.5가 설치되어있지만 저자는 1.21로 설정하여 설치
 
-```cmd
+```sh
 // go가 1.21이기 때문에 nakama-common는 1.31.0
 go get github.com/heroiclabs/nakama-common@1.31.0
 ```
 
 4.vendor폴더 생성
 
-```cmd
+```sh
 go mod vendor
 ```
 
@@ -203,7 +203,7 @@ services:
       - "7350"
       - "7351"
     healthcheck:
-      test: ["CMD", "/nakama/nakama", "healthcheck"]
+      test: ["sh", "/nakama/nakama", "healthcheck"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -226,26 +226,26 @@ docker만 설치된 상황에서는 ```docker-compose.yml```를 사용을 안하
 </br>
 1.docker-compose커맨드 설치
 
-```cmd
+```sh
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
 </br>
 2.다운로드 실행 권한 부여
 
-```cmd
+```sh
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 </br>
 <h2>docker-compose실행</h2>
 
-```cmd
+```sh
 docker-compose up -d
 ```
 </br>
 <h2>docker-compose 로그 확인</h2>
 
-```cmd
+```sh
 docker-compose logs
 
 // linux의 tail -f 과 같은 기능
@@ -254,6 +254,6 @@ docker-compose logs -f
 </br>
 <h2>docker-compose 정지</h2>
 
-```cmd
+```sh
 docker-compose down
 ```

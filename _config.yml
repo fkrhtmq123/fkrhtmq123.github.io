@@ -85,11 +85,11 @@ share_to: true #enable share-to buttons if true
 #### Author information
 author:
   name: Kim Dongwook      ## e.g. wuchong Author name
-  intro_line1:  "Hello ,I'm Larry Page in Google."    ## your introduction on the bottom of the page
-  intro_line2:  "This is my blog,believe it or not."  ## the 2nd line
+  intro_line1:  ""    ## your introduction on the bottom of the page
+  intro_line2:  ""  ## the 2nd line
   email:      ## e.g. imjark@gmail.com
   twitter:    ## e.g. jarkwu for https://twitter.com/jarkwu
-  github:     https://github.com/fkrhtmq123  ## e.g. wuchong for https://github.com/wuchong
+  github:     fkrhtmq123  ## e.g. wuchong for https://github.com/wuchong
   facebook:   ## e.g. imjark for https://facebook.com/imjark
   linkedin:   ## e.g. wuchong1014 for https://www.linkedin.com/in/wuchong1014
   google_plus:    ## e.g. "111190881341800841449" for https://plus.google.com/u/0/111190881341800841449, the "" is needed!
