@@ -25,6 +25,13 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 | Nakama-common | 1.31.0 |
 | google.golang.org/protobuf | 1.31.0 |
 | docker | 25.0.5 |
+
+| Table Header 1 | Table Header 2 | Table Header 3 |
+| --- | --- | --- |
+| Division 1 | Division 2 | Division 3 |
+| Division 1 | Division 2 | Division 3 |
+| Division 1 | Division 2 | Division 3 |
+
 <br /><br />
 
 # AWS EC2에 docker설치
