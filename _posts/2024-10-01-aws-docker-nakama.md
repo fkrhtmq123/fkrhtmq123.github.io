@@ -1,0 +1,11 @@
+---
+title: AWS EC2에 linux에 Nakama설치
+date: 2024-10-05 13:38:00
+categories: 
+- Tech
+tags:
+- Tech
+---
+
+<h1>Nakama란</h1>
+소셜 또는 리얼 타임 게임이나 어플에 사용이 가는 확장형 서버입니다.
