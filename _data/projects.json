@@ -2,7 +2,7 @@
 	{
 		"name": "AWS EC2에 linux에 Nakama설치",
 		"image": "go-nakama-start.png",
-		"url": "",
+		"url": "tech/2024/10/05/aws-docker.html",
 		"date": "Oct 2024",
 		"tags": ["Go","Nakama", "AWS", "Linux"]
 	}
