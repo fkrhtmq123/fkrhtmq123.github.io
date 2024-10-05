@@ -11,48 +11,48 @@ tags:
 
 # Nakama란
 소셜 또는 리얼 타임 게임이나 어플에 사용이 가는 확장형 서버입니다.
-</br></br>
+<br /><br />
 Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, 온라인 데이터 교환 등 사용이 가능합니다.
-</br></br>
+<br /><br />
 
 # 사전 준비
 저자는 밑에 표의 스펙으로 설치, 실행했습니다.
 
 |라이브터리명|버전|
-|-|-|
+|--|--|
 |go|1.22.5|
 |Nakama|3.21.1|
 |Nakama-common|1.31.0|
 |google.golang.org/protobuf|1.31.0|
 |docker|25.0.5|
-</br></br>
+<br /><br />
 
 # AWS EC2에 docker설치
 ※EC2가 Amazon Linux 2023일 경우로 설명
 
-</br>
+<br />
 1. Docker패키지 설치
 
 ```sh
 sudo yum install -y docker
 ```
 
-</br>
+<br />
 2. Docker서비스 시작
 
 ```sh
 sudo service docker start
 ```
 
-</br>
+<br />
 3. 서버 부팅 시 서비스 시작
 
 ```sh
 sudo systemctl enable docker
 ```
 
-</br>
-4. 사용자 그룹 추가(선택 사항)</br>
+<br />
+4. 사용자 그룹 추가(선택 사항)<br />
 
 (``sudo``를 사용하지 않고 명령어를 입력하기 위해서)
 
@@ -62,7 +62,7 @@ sudo usermod -aG docker user
 // 변경 사항 적용
 newgrp docker
 ```
-</br></br>
+<br /><br />
 
 # Go에 Nakama설치 및 docker설정
 1.Go 프로젝트를 만들기 위해 폴더를 작성
@@ -223,31 +223,31 @@ services:
 volumes:
   data:
 ```
-</br>
+<br />
 ## docker-compose설치
 
 docker만 설치된 상황에서는 ```docker-compose.yml```를 사용을 안하고 기본 설정으로 실핼이 되므로 docker-compose 커맨드로 실행을 해야 ```docker-compose.yml```설정으로 실행이된다.
 
-</br>
+<br />
 1.docker-compose커맨드 설치
 
 ```sh
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
-</br>
+<br />
 2.다운로드 실행 권한 부여
 
 ```sh
 sudo chmod +x /usr/local/bin/docker-compose
 ```
-</br>
+<br />
 ## docker-compose실행
 
 ```sh
 docker-compose up -d
 ```
-</br>
+<br />
 ## docker-compose 로그 확인
 
 ```sh
@@ -256,7 +256,7 @@ docker-compose logs
 // linux의 tail -f 과 같은 기능
 docker-compose logs -f
 ```
-</br>
+<br />
 ## docker-compose 정지
 
 ```sh
