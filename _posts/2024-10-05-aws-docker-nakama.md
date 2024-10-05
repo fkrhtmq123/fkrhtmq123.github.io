@@ -18,13 +18,13 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 # 사전 준비
 저자는 밑에 표의 스펙으로 설치, 실행했습니다.
 
-|라이브터리명|버전|
-|--|--|
-|go|1.22.5|
-|Nakama|3.21.1|
-|Nakama-common|1.31.0|
-|google.golang.org/protobuf|1.31.0|
-|docker|25.0.5|
+| 라이브터리명 | 버전 |
+| --- | --- |
+| go | 1.22.5 |
+| Nakama |3.21.1 |
+| Nakama-common | 1.31.0 |
+| google.golang.org/protobuf | 1.31.0 |
+| docker | 25.0.5 |
 <br /><br />
 
 # AWS EC2에 docker설치
