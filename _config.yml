@@ -30,7 +30,7 @@ defaults:
 paginate: 20
 
 #### Site
-title : 기술 블로그
+title : 김동욱의 기술 블로그
 tagline: 개발자로서 성장하기 위한 나만의 기술 블로그
 assets: /assets
 url:
