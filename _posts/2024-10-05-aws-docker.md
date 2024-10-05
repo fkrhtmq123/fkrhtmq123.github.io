@@ -1,7 +1,9 @@
 ---
 title: AWS EC2에 linux에 Nakama설치
 date: 2024-10-05 13:38:00
-tags: 
+categories: 
+- Tech
+tags:
 - Tech
 ---
 <h1>Nakama란</h1>
