@@ -1,12 +1,13 @@
 ---
 layout: post
-title: AWS EC2에 linux에 Nakama설치
+title: AWS EC2 linux환경에 Nakama설치(Docker이용)
 categories: 
 - Tech
 tags:
 - AWS
 - Linux
 - Go
+- Docker
 ---
 
 # Nakama란
