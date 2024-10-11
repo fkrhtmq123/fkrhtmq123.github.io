@@ -260,7 +260,7 @@ docker-compose logs
 docker-compose logs -f
 ```
 <br />
-## docker-compose 정지
+## docker-compose 정지커맨드
 
 ```sh
 docker-compose down

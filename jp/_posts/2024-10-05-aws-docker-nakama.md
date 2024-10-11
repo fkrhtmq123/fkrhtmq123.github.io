@@ -11,16 +11,16 @@ tags:
 lang: jp
 ---
 
-# Nakama란
-소셜 또는 리얼 타임 게임이나 어플에 사용이 가는 확장형 서버입니다.
+# Nakamaとは
+ソーシャルまたはリアルタイムゲーム、アプリに使用可能な拡張型サーバーです。
 <br /><br />
-Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, 온라인 데이터 교환 등 사용이 가능합니다.
+Nakamaサーバーを使用するとユーザー認証、ソーシャルネットワーキング、ストレージ、オンラインデータ交換などに使用が可能です。
 <br /><br />
 
-# 사전 준비
-저자는 밑에 표의 스펙으로 설치, 실행했습니다.
+# 事前準備
+筆者は下記の表のスペックで設定、実行しました。
 
-| 라이브터리명 | 버전 |
+| ライブラリー名 | バージョン |
 | --- | --- |
 | go | 1.22.5 |
 | Nakama |3.21.1 |
@@ -30,75 +30,75 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 
 <br /><br />
 
-# AWS EC2에 docker설치
-※EC2가 Amazon Linux 2023일 경우로 설명
+# AWS EC2に dockerを設定
+※EC2のインスタンスが Amazon Linux 2023の場合の説明
 
 <br />
-1. Docker패키지 설치
+1. Dockerパッケージ設置
 
 ```sh
 sudo yum install -y docker
 ```
 
 <br />
-2. Docker서비스 시작
+2. Dockerサービス開始
 
 ```sh
 sudo service docker start
 ```
 
 <br />
-3. 서버 부팅 시 서비스 시작
+3. サーバー再起動時サービス開始
 
 ```sh
 sudo systemctl enable docker
 ```
 
 <br />
-4. 사용자 그룹 추가(선택 사항)<br />
+4. 使用者グループを追加(選択事項)<br />
 
-(``sudo``를 사용하지 않고 명령어를 입력하기 위해서)
+(``sudo``を毎回入力しなくてコマンドを入力可能にするため)
 
 ```sh
 sudo usermod -aG docker user
 
-// 변경 사항 적용
+// 変更事項適用
 newgrp docker
 ```
 <br /><br />
 
-# Go에 Nakama설치 및 docker설정
-1.Go 프로젝트를 만들기 위해 폴더를 작성
+# Goに Nakama設定及びdocker設定
+1.Goのプロジェクトを作るためにフォルダ作成
 
 ```sh
 mkidr go-nakam-test
 cd go-nakama-test
 ```
 
-2.```go.mod``` 초기화
+2.```go.mod``` 初期化
 
 ```sh
 go mod init project-name
 ```
 
-3.nakama-common을 설치
-go는 1.22.5가 설치되어있지만 저자는 1.21로 설정하여 설치
+3.nakama-commonを設定
+goは 1.22.5ですが、筆者が1.21に設定して開始
 
 ```sh
-// go가 1.21이기 때문에 nakama-common는 1.31.0
+// goが 1.21なので nakama-common는 1.31.0
 go get github.com/heroiclabs/nakama-common@1.31.0
 ```
 
-4.vendor폴더 생성
+4.vendorフォルダ生成
 
 ```sh
 go mod vendor
 ```
 
-위에 까지가 커맨드로 인한 설치
-밑에 부터는 파일을 직접 작성합니다.
+上記までがコマンドで設置
+下記からはファイルを直接作成します。
 
-## 파일 생성
+## ファイル作成
 
 ```javascript
 // main.go
@@ -227,40 +227,40 @@ volumes:
   data:
 ```
 <br />
-## docker-compose설치
+## docker-compose設置
 
-docker만 설치된 상황에서는 ```docker-compose.yml```를 사용을 안하고 기본 설정으로 실핼이 되므로 docker-compose 커맨드로 실행을 해야 ```docker-compose.yml```설정으로 실행이된다.
+dockerだけ設置してる状況だと ```docker-compose.yml```ファイルを使用せず基本設定で実行されるので docker-compose コマンドを使って ```docker-compose.yml```の設定で実行します。
 
 <br />
-1.docker-compose커맨드 설치
+1.docker-composeコマンド設置
 
 ```sh
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
 <br />
-2.다운로드 실행 권한 부여
+2.ダウンロード実行権限付与
 
 ```sh
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 <br />
-## docker-compose실행
+## docker-compose実行
 
 ```sh
 docker-compose up -d
 ```
 <br />
-## docker-compose 로그 확인
+## docker-composeログ確認
 
 ```sh
 docker-compose logs
 
-// linux의 tail -f 과 같은 기능
+// linuxの tail -f と同じ機能
 docker-compose logs -f
 ```
 <br />
-## docker-compose 정지
+## docker-compose停止コマンド
 
 ```sh
 docker-compose down
