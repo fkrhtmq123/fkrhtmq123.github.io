@@ -1,0 +1,13 @@
+<ul class="nav-lang">
+
+    {% for lang in site.languages %}
+    <li id="lang" style="float: right;">
+        <a 
+        style="text-align: center; {% if lang == site.active_lang %}font-weight: bold;{% endif %}" 
+        href="{% if lang == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ lang }}{{ page.url }}{% endif %}">
+        {{ lang }}
+        </a>
+    </li>
+    {% endfor %}
+  
+  </ul>

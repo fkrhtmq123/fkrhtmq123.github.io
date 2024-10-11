@@ -1,4 +1,6 @@
 ---
+lang: en
+permalink: /2024/10/05/aws-docker-nakama/
 layout: post
 title: AWS EC2 linux환경에 Nakama설치(Docker이용)
 categories: 
