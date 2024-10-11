@@ -1,3 +1,5 @@
+{% assign lang = site.data.languages[page.lang] %}
+
 {% if page.layout == 'archives' %}
 <section class="post {{ item.date | date: "%Y-%m" }}" itemscope itemprop="blogPost">
 {% elsif page.layout == 'categories' %}

@@ -30,21 +30,23 @@ defaults:
 paginate: 20
 
 #### Site
-title : 김동욱의 기술 블로그
-tagline: 개발자로서 성장하기 위한 나만의 기술 블로그
+# title : 김동욱의 기술 블로그
+# tagline: 개발자로서 성장하기 위한 나만의 기술 블로그
 assets: /assets
+# url: https://fkrhtmq123.github.io
+# baseurl: https://fkrhtmq123.github.io
 url:
-baseurl:
+baseurl: 
 
 plugins:
   - jekyll-polyglot
 
 #### Language
 # language: en    ## blog site languages: en, de
-languages: ["en", "ko"] # 지원하고자 하는 언어
-default_lang: "ko" # 컨텐츠의 기본 언어
-exclude_from_localization: ['javascript', 'images', 'css', 'sitemap.xml'] # 루트 폴더 중 다국어 기능 제외 시킬 폴더
-parallel_localizaion: false # 별 의미 없음
+languages: ["ko", "jp"]
+default_lang: "ko"
+exclude_from_localization: ['javascript', 'images', 'css', 'sitemap.xml']
+parallel_localizaion: false
 
 #### Menu
 menu:
@@ -62,7 +64,7 @@ menu:
 widgets:
 - category
 - tag
-- tagcloud
+# - tagcloud
 - github-visitant
 - language
 # - links

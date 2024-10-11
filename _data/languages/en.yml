@@ -1,7 +1,6 @@
 categories: Categories
 search: Search
 tags: Tags
-tagcloud: Tag Cloud
 prev: Prev
 next: Next
 prev-post: 'Prev: '
@@ -15,10 +14,8 @@ archive_date: "%b %Y"
 page: Page %d
 recent_posts: Recent Posts
 menu: Menu
-weibo: Weibo
 links: Links
 rss: RSS
-doubanshow: Douban Show
 github-card: Github Card
 github-visitant: Github Visitant
 showsidebar: Show Sidebar

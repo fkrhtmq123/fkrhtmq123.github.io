@@ -1,0 +1,31 @@
+categories: カテゴリー
+search: 検索
+tags: タグ
+prev: 前へ
+next: 次へ
+prev-post: '前へ: '
+next-post: '次へ: '
+search-load:  Loading, please wait.
+comment: コメント
+contents: Contents
+archive_a: Archives
+archive_b: "Archives: %s"
+archive_date: "%b %Y"
+page: Page %d
+recent_posts: Recent Posts
+menu: メニュー
+links: リンク
+rss: RSS
+github-card: Github Card
+github-visitant: 訪問者
+showsidebar: Show Sidebar
+hidesidebar: Hide Sidebar
+updated: Updated
+totop: Back to Top
+datepublished: Published
+title: ドンウクの技術ラボ
+tagline: 開発者として成功するための技術ブログ
+menu:
+  Home: /jp/
+  Archives: /jp/archives
+  About: /jp/about

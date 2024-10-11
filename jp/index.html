@@ -1,0 +1,10 @@
+---
+layout: default
+lang: jp
+---
+
+{% if page.lang == 'jp' %}
+  {% include index-jp.html %}
+{% else %}
+  {% include index.html %}
+{% endif %}

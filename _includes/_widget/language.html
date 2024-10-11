@@ -1,13 +1,28 @@
-<ul class="nav-lang">
+{% assign active_lang = page.lang | default: site.default_lang %}
+{% assign lang_path = '/' | append: active_lang %}
 
+<ul class="nav-lang">
     {% for lang in site.languages %}
-    <li id="lang" style="float: right;">
+    <li id="lang" style="display: inline-block; margin-right: 10px;">
         <a 
-        style="text-align: center; {% if lang == site.active_lang %}font-weight: bold;{% endif %}" 
-        href="{% if lang == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ lang }}{{ page.url }}{% endif %}">
+        style="text-align: center; display: inline-block; padding: 10px 15px; 
+        background-color: {% if lang == active_lang %}#007bff{% else %}#f8f9fa{% endif %}; 
+        color: {% if lang == active_lang %}#ffffff{% else %}#007bff{% endif %}; 
+        border: 1px solid #007bff; 
+        border-radius: 5px; 
+        text-decoration: none; 
+        transition: background-color 0.3s, color 0.3s;"
+
+        href="{% if lang == active_lang %}
+                {{ site.baseurl }}{{ page.url }}
+            {% elsif lang == site.default_lang %}
+                {{ site.baseurl }}{{ page.url | replace_first: lang_path, '' }}
+            {% else %}
+                {{ site.baseurl }}/{{ lang }}{{ page.url | remove_first: active_lang | prepend: '/' }}
+            {% endif %}">
+
         {{ lang }}
         </a>
     </li>
     {% endfor %}
-  
-  </ul>
+</ul>

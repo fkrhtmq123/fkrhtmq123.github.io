@@ -1,7 +1,20 @@
+{% assign lang = site.data.languages[page.lang] %}
+{% assign default_lang = site.data.languages[site.default_lang] %}
+
 {% if site.tags | size != 0 %}
   <div class="tagcloudlist">
-    <p class="asidetitle">{{ lang.tagcloud }}</p>
+    {% if lang.tagcloud %}
+      <p class="asidetitle">{{ lang.tagcloud }}</p>
+    {% else %}
+      <p class="asidetitle">{{ default_lang.tagcloud }}</p>
+    {% endif %}
+    
     <div id="tagcloud" class="tagcloudlist clearfix">
+      {% for item in site.tags %}
+        {% if item[1] %}
+          <a href="{{ site.baseurl }}/tags/#{{ item[0] }}" title="{{ item[0] }}">{{ item[0] }}<sup>{{ item[1] | size }}</sup></a>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 {% endif %}

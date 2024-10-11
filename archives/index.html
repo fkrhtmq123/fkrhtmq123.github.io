@@ -1,4 +1,8 @@
 ---
 layout: archives
 type: archives
+lang: ko
 ---
+
+{% assign lang = site.data.languages[page.lang] %}
+{% include _partial/archive.html %}
