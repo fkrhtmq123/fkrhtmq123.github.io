@@ -8,7 +8,7 @@
     
     
     
-    <title>AWS EC2 linux環境に Nakama設置(Docker利用) | fkrhtmq123.github.io</title>
+    <title>AWS EC2 linux環境に Nakamaインストール(Docker利用) | fkrhtmq123.github.io</title>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -23,12 +23,12 @@
     
     <meta property="og:type" content="article">
     
-    <meta property="og:title" content="AWS EC2 linux環境に Nakama設置(Docker利用)">
+    <meta property="og:title" content="AWS EC2 linux環境に Nakamaインストール(Docker利用)">
     <meta property="og:url" content="/jp/tech/2024/10/05/aws-docker-nakama/">
     <meta property="og:site_name" content="fkrhtmq123.github.io">
     <meta property="og:description" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="AWS EC2 linux環境に Nakama設置(Docker利用)">
+    <meta name="twitter:title" content="AWS EC2 linux環境に Nakamaインストール(Docker利用)">
     <meta name="twitter:description" content="page.description">
     <meta name="twitter:creator" content="@">
     <link rel="publisher" href="">
@@ -126,7 +126,7 @@
 	<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/jp/tech/2024/10/05/aws-docker-nakama/" title="AWS EC2 linux環境に Nakama設置(Docker利用)" itemprop="url">AWS EC2 linux環境に Nakama設置(Docker利用)</a>
+      <a href="/jp/tech/2024/10/05/aws-docker-nakama/" title="AWS EC2 linux環境に Nakamaインストール(Docker利用)" itemprop="url">AWS EC2 linux環境に Nakamaインストール(Docker利用)</a>
   </h1>
   <p class="article-author">By
        
@@ -145,20 +145,20 @@
 		
 		</div>
 		
-		<h1 id="nakama란">Nakama란</h1>
-<p>소셜 또는 리얼 타임 게임이나 어플에 사용이 가는 확장형 서버입니다.
+		<h1 id="nakamaとは">Nakamaとは</h1>
+<p>ソーシャルまたはリアルタイムゲーム、アプリに使用可能な拡張型サーバーです。
 <br /><br />
-Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, 온라인 데이터 교환 등 사용이 가능합니다.
+Nakamaサーバーを使用するとユーザー認証、ソーシャルネットワーキング、ストレージ、オンラインデータ交換などに使用が可能です。
 <br /><br /></p>
 
-<h1 id="사전-준비">사전 준비</h1>
-<p>저자는 밑에 표의 스펙으로 설치, 실행했습니다.</p>
+<h1 id="事前準備">事前準備</h1>
+<p>筆者は下記の表のスペックで設定、実行しました。</p>
 
 <table>
   <thead>
     <tr>
-      <th>라이브터리명</th>
-      <th>버전</th>
+      <th>ライブラリー名</th>
+      <th>バージョン</th>
     </tr>
   </thead>
   <tbody>
@@ -187,12 +187,12 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 
 <p><br /><br /></p>
 
-<h1 id="aws-ec2에-docker설치">AWS EC2에 docker설치</h1>
-<p>※EC2가 Amazon Linux 2023일 경우로 설명</p>
+<h1 id="aws-ec2に-dockerを設定">AWS EC2に dockerを設定</h1>
+<p>※EC2のインスタンスが Amazon Linux 2023の場合の説明</p>
 
 <p><br /></p>
 <ol>
-  <li>Docker패키지 설치</li>
+  <li>Dockerパッケージインストール</li>
 </ol>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> docker
@@ -200,7 +200,7 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 
 <p><br /></p>
 <ol>
-  <li>Docker서비스 시작</li>
+  <li>Dockerサービス開始</li>
 </ol>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>service docker start
@@ -208,7 +208,7 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 
 <p><br /></p>
 <ol>
-  <li>서버 부팅 시 서비스 시작</li>
+  <li>サーバー再起動時サービス開始</li>
 </ol>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl <span class="nb">enable </span>docker
@@ -216,46 +216,46 @@ Nakama서버를 사용하면 유저 인증, 소셜 네트워킹, 스토리지, �
 
 <p><br /></p>
 <ol>
-  <li>사용자 그룹 추가(선택 사항)<br /></li>
+  <li>使用者グループを追加(選択事項)<br /></li>
 </ol>
 
-<p>(<code class="language-plaintext highlighter-rouge">sudo</code>를 사용하지 않고 명령어를 입력하기 위해서)</p>
+<p>(<code class="language-plaintext highlighter-rouge">sudo</code>を毎回入力しなくてコマンドを入力可能にするため)</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker user
 
-// 변경 사항 적용
+// 変更事項適用
 newgrp docker
 </code></pre></div></div>
 <p><br /><br /></p>
 
-<h1 id="go에-nakama설치-및-docker설정">Go에 Nakama설치 및 docker설정</h1>
-<p>1.Go 프로젝트를 만들기 위해 폴더를 작성</p>
+<h1 id="goに-nakama設定及びdocker設定">Goに Nakama設定及びdocker設定</h1>
+<p>1.Goのプロジェクトを作るためにフォルダ作成</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkidr go-nakam-test
 <span class="nb">cd </span>go-nakama-test
 </code></pre></div></div>
 
-<p>2.<code class="language-plaintext highlighter-rouge">go.mod</code> 초기화</p>
+<p>2.<code class="language-plaintext highlighter-rouge">go.mod</code> 初期化</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go mod init project-name
 </code></pre></div></div>
 
-<p>3.nakama-common을 설치
-go는 1.22.5가 설치되어있지만 저자는 1.21로 설정하여 설치</p>
+<p>3.nakama-commonを設定
+goは 1.22.5ですが、筆者が1.21に設定して開始</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// go가 1.21이기 때문에 nakama-common는 1.31.0
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// goが 1.21なので nakama-common는 1.31.0
 go get github.com/heroiclabs/nakama-common@1.31.0
 </code></pre></div></div>
 
-<p>4.vendor폴더 생성</p>
+<p>4.vendorフォルダ生成</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go mod vendor
 </code></pre></div></div>
 
-<p>위에 까지가 커맨드로 인한 설치
-밑에 부터는 파일을 직접 작성합니다.</p>
+<p>上記までがコマンドでインストール
+下記からはファイルを直接作成します。</p>
 
-<h2 id="파일-생성">파일 생성</h2>
+<h2 id="ファイル作成">ファイル作成</h2>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.go</span>
 <span class="kr">package</span> <span class="nx">main</span>
@@ -383,36 +383,36 @@ volumes:
   data:
 </span></code></pre></div></div>
 <p><br /></p>
-<h2 id="docker-compose설치">docker-compose설치</h2>
+<h2 id="docker-composeインストール">docker-composeインストール</h2>
 
-<p>docker만 설치된 상황에서는 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>를 사용을 안하고 기본 설정으로 실핼이 되므로 docker-compose 커맨드로 실행을 해야 <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>설정으로 실행이된다.</p>
+<p>dockerだけインストールしてる状況だと <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>ファイルを使用せず基本設定で実行されるので docker-compose コマンドを使って <code class="language-plaintext highlighter-rouge">docker-compose.yml</code>の設定で実行します。</p>
 
 <p><br />
-1.docker-compose커맨드 설치</p>
+1.docker-composeコマンドインストール</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>curl <span class="nt">-L</span> <span class="s2">"https://github.com/docker/compose/releases/latest/download/docker-compose-</span><span class="si">$(</span><span class="nb">uname</span> <span class="nt">-s</span><span class="si">)</span><span class="s2">-</span><span class="si">$(</span><span class="nb">uname</span> <span class="nt">-m</span><span class="si">)</span><span class="s2">"</span> <span class="nt">-o</span> /usr/local/bin/docker-compose
 </code></pre></div></div>
 
 <p><br />
-2.다운로드 실행 권한 부여</p>
+2.ダウンロード実行権限付与</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chmod</span> +x /usr/local/bin/docker-compose
 </code></pre></div></div>
 <p><br /></p>
-<h2 id="docker-compose실행">docker-compose실행</h2>
+<h2 id="docker-compose実行">docker-compose実行</h2>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up <span class="nt">-d</span>
 </code></pre></div></div>
 <p><br /></p>
-<h2 id="docker-compose-로그-확인">docker-compose 로그 확인</h2>
+<h2 id="docker-composeログ確認">docker-composeログ確認</h2>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose logs
 
-// linux의 <span class="nb">tail</span> <span class="nt">-f</span> 과 같은 기능
+// linuxの <span class="nb">tail</span> <span class="nt">-f</span> と同じ機能
 docker-compose logs <span class="nt">-f</span>
 </code></pre></div></div>
 <p><br /></p>
-<h2 id="docker-compose-정지">docker-compose 정지</h2>
+<h2 id="docker-compose停止コマンド">docker-compose停止コマンド</h2>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose down
 </code></pre></div></div>
@@ -464,7 +464,7 @@ docker-compose logs <span class="nt">-f</span>
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://localhost:4000/jp/tech/2024/10/05/aws-docker-nakama/" data-title="AWS EC2 linux環境に Nakama設置(Docker利用) | fkrhtmq123.github.io" data-tsina="" class="share clearfix">
+	  <div data-url="http://localhost:4000/jp/tech/2024/10/05/aws-docker-nakama/" data-title="AWS EC2 linux環境に Nakamaインストール(Docker利用) | fkrhtmq123.github.io" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -484,6 +484,14 @@ docker-compose logs <span class="nt">-f</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/tech/2024/10/14/github-blog-create/"  title="깃허브 블로그 생성">
+ <strong></strong><br/> 
+ <span>깃허브 블로그 생성
+</span>
+</a>
+</div>
 
 </nav>
 
@@ -518,11 +526,11 @@ docker-compose logs <span class="nt">-f</span>
 	<ul>
 		
 		  
-			<li><a href="/categories/#Tech" title="Tech">Tech<sup>2</sup></a></li>
+			<li><a href="/categories/#Tech" title="Tech">Tech<sup>6</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/#jp" title="jp">jp<sup>1</sup></a></li>
+			<li><a href="/categories/#jp" title="jp">jp<sup>3</sup></a></li>
 		  
 		
 	</ul>
@@ -555,6 +563,18 @@ docker-compose logs <span class="nt">-f</span>
 		
 			
 				<li><a href="/tags/#Docker" title="Docker">Docker<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#Github" title="Github">Github<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#Ruby" title="Ruby">Ruby<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#Mac" title="Mac">Mac<sup>2</sup></a></li>
 			
 		
 	</ul>

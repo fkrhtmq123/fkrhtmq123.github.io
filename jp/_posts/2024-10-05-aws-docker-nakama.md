@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AWS EC2 linux環境に Nakama設置(Docker利用)
+title: AWS EC2 linux環境に Nakamaインストール(Docker利用)
 categories: 
 - Tech
 tags:
@@ -34,7 +34,7 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
 ※EC2のインスタンスが Amazon Linux 2023の場合の説明
 
 <br />
-1. Dockerパッケージ設置
+1. Dockerパッケージインストール
 
 ```sh
 sudo yum install -y docker
@@ -95,7 +95,7 @@ go get github.com/heroiclabs/nakama-common@1.31.0
 go mod vendor
 ```
 
-上記までがコマンドで設置
+上記までがコマンドでインストール
 下記からはファイルを直接作成します。
 
 ## ファイル作成
@@ -227,12 +227,12 @@ volumes:
   data:
 ```
 <br />
-## docker-compose設置
+## docker-composeインストール
 
-dockerだけ設置してる状況だと ```docker-compose.yml```ファイルを使用せず基本設定で実行されるので docker-compose コマンドを使って ```docker-compose.yml```の設定で実行します。
+dockerだけインストールしてる状況だと ```docker-compose.yml```ファイルを使用せず基本設定で実行されるので docker-compose コマンドを使って ```docker-compose.yml```の設定で実行します。
 
 <br />
-1.docker-composeコマンド設置
+1.docker-composeコマンドインストール
 
 ```sh
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose

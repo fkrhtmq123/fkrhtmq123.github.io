@@ -1,6 +1,6 @@
 
 
-        <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html >
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     
     
     
-    <title>fkrhtmq123.github.io</title>
+    <title>Github blog作成 | fkrhtmq123.github.io</title>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -21,14 +21,14 @@
 
     <meta name="description" content="page.description">
     
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     
-    <meta property="og:title" content="">
-    <meta property="og:url" content="/jp/">
+    <meta property="og:title" content="Github blog作成">
+    <meta property="og:url" content="/jp/tech/2024/10/14/github-blog-create/">
     <meta property="og:site_name" content="fkrhtmq123.github.io">
     <meta property="og:description" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="">
+    <meta name="twitter:title" content="Github blog作成">
     <meta name="twitter:description" content="page.description">
     <meta name="twitter:creator" content="@">
     <link rel="publisher" href="">
@@ -117,113 +117,13 @@
     </header>
     <div id="container">
       
-  <div id="main">
+
+
+
+<div id="main" class="post" itemscope itemprop="blogPost">
   
-  
-
-  
-    
-    
-    
-  
-    
-      
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/jp/tech/2024/10/14/github-blog-jekyll-local/" title="Github blog local実行（Mac）" itemprop="url">Github blog local実行（Mac）</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Kim Dongwook" target="_blank" itemprop="author">Kim Dongwook</a>
-		
-  <p class="article-time">
-    <time datetime="2024-10-14 00:00:00 +0900" itemprop="datePublished">  2024-10-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>前の投稿ではブログの作成までだったのですが実際にGitに反映する前にちゃんと動いているかlocalで実行して確認をする必要があります。</p>
-
-
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/jp/tech/2024/10/14/github-blog-jekyll-local/#more">Read More</a>
-          
-       </p>
-    </div>
-    
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <!--
-  <%- list_categories(item.categories, {
-      show_count: false,
-      class: 'article-category',
-      style: 'none',
-      separator: '►'
-  }) %>
-  -->
-  
-  <a class="article-category-link" href="/categories/#jp">jp</a>
-  
-  <a class="article-category-link" href="/categories/#Tech">Tech</a>
-  
-</div>
-
-
-  <div class="article-tags">
-  <!--
-  <% var tags = [];
-    item.tags.forEach(function(tag){
-      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
-    }); %>-->
-  <span></span> <!--<%- tags.join('') %>-->
-  
-  
-  <a href="/tags/#Github">Github</a>
-  
-  <a href="/tags/#Ruby">Ruby</a>
-  
-  <a href="/tags/#Mac">Mac</a>
-  
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-    </article>
-
-
-
-
-
-    
-  
-    
-    
-    
-  
-    
-      
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+	<article itemprop="articleBody"> 
+	<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/jp/tech/2024/10/14/github-blog-create/" title="Github blog作成" itemprop="url">Github blog作成</a>
@@ -237,21 +137,77 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>筆者は開発者として働きながら前の職場を含めて３年になるが技術ブログがないとダメな気がしていろんなブログを確認したのですがGithubでブログが作れると知りGithubでどうやってブログを作れるか書こうと思います。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article toc-content" style="display: none;">
+		
+			<!--<%- toc(item.content) %>-->
+		
+		</div>
+		
+		<p>筆者は開発者として働きながら前の職場を含めて３年になるが技術ブログがないとダメな気がしていろんなブログを確認したのですがGithubでブログが作れると知りGithubでどうやってブログを作れるか書こうと思います。</p>
 
+<p><br /><br /></p>
 
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/jp/tech/2024/10/14/github-blog-create/#more">Read More</a>
-          
-       </p>
-    </div>
-    
-    <footer class="article-footer clearfix">
+<h1 id="git-プロジェクト作成">Git プロジェクト作成</h1>
+<p>Gitブログを作るためにまずGitプロジェクト作成を作成します。</p>
+
+<p><img src="/assets/img/git_blog_create_project.png" /></p>
+
+<p>[Repository name] には</p>
+<pre><code class="language-cmd">[USERNAME].github.io
+</code></pre>
+
+<p><br /><br /></p>
+
+<h1 id="git-clone깃-클론git-プロジェクト">Git Clone깃 클론Git プロジェクト</h1>
+<p>上記で作成したGitプロジェクトをCloneします。</p>
+
+<p><img src="/assets/img/git_blog_clone.png" /></p>
+
+<p>作成したプロジェクトページに緑色のボタン <code class="language-plaintext highlighter-rouge">Code</code>をクリックし <code class="language-plaintext highlighter-rouge">HTTPS</code>でGit URLをコピー
+<br />
+コピーしたURLをCloneしたいフォルダに移動し、Clone</p>
+
+<pre><code class="language-cmd">cd developer
+git clone https://github.com/fkrhtmq123/fkrhtmq123.github.io.git
+</code></pre>
+
+<p><br /><br /></p>
+
+<h1 id="ブログのテーマ決め">ブログのテーマ決め</h1>
+<p><a href="http://jekyllthemes.org/">http://jekyllthemes.org/</a>
+<br />
+上記のURLで使いたいテーマを決めてクリック</p>
+
+<p><img src="/assets/img/jekyll_theme1.png" /></p>
+
+<p>ライセンスを確認してダウンロードをクリックしてテーマをダウンロード<br />
+ライセンスが無料（MIT）じゃないものがあるので要確認</p>
+
+<p><img src="/assets/img/jekyll_theme2.png" /></p>
+
+<p><br /><br /></p>
+
+<h1 id="テーマ適用">テーマ適用</h1>
+<p>ダウンロードしたテーマのZIPを解凍して、内容を作成してCloneしたプロジェクトにコピペ</p>
+
+<p><img src="/assets/img/jekyll_theme3.png" /></p>
+
+<p><img src="/assets/img/jekyll_theme4.png" /></p>
+
+<p><br /><br /></p>
+
+<h1 id="git-commit--push">Git commit &amp; push</h1>
+<p>Gitにcommit &amp; pushするとテーマが適用されます。<br />
+適用に早いものも遅いものをあるので約1分を待ちます。</p>
+
+<p>これでGit Blogが完成。</p>
+
+<p>次にGit Blogをlocalで実行する方法を説明します。</p>
+  
+	</div>
+	<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -291,137 +247,52 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://localhost:4000/jp/tech/2024/10/14/github-blog-create/" data-title="Github blog作成 | fkrhtmq123.github.io" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
-
-    </article>
-
-
-
-
-
-    
-  
-    
-    
-    
-  
-    
-      
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/jp/tech/2024/10/05/aws-docker-nakama/" title="AWS EC2 linux環境に Nakamaインストール(Docker利用)" itemprop="url">AWS EC2 linux環境に Nakamaインストール(Docker利用)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Kim Dongwook" target="_blank" itemprop="author">Kim Dongwook</a>
-		
-  <p class="article-time">
-    <time datetime="2024-10-05 00:00:00 +0900" itemprop="datePublished">  2024-10-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="nakamaとは">Nakamaとは</h1>
-<p>ソーシャルまたはリアルタイムゲーム、アプリに使用可能な拡張型サーバーです。
-<br /><br />
-Nakamaサーバーを使用するとユーザー認証、ソーシャルネットワーキング、ストレージ、オンラインデータ交換などに使用が可能です。
-<br /><br /></p>
-
-
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/jp/tech/2024/10/05/aws-docker-nakama/#more">Read More</a>
-          
-       </p>
-    </div>
-    
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <!--
-  <%- list_categories(item.categories, {
-      show_count: false,
-      class: 'article-category',
-      style: 'none',
-      separator: '►'
-  }) %>
-  -->
-  
-  <a class="article-category-link" href="/categories/#jp">jp</a>
-  
-  <a class="article-category-link" href="/categories/#Tech">Tech</a>
-  
-</div>
-
-
-  <div class="article-tags">
-  <!--
-  <% var tags = [];
-    item.tags.forEach(function(tag){
-      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
-    }); %>-->
-  <span></span> <!--<%- tags.join('') %>-->
-  
-  
-  <a href="/tags/#AWS">AWS</a>
-  
-  <a href="/tags/#Linux">Linux</a>
-  
-  <a href="/tags/#Go">Go</a>
-  
-  <a href="/tags/#Docker">Docker</a>
-  
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/tech/2024/10/14/github-blog-jekyll-local/" title="깃허브 블로그 로컬 실행(Mac)">
+  <strong></strong><br/>
+  <span>
+  깃허브 블로그 로컬 실행(Mac)</span>
+</a>
 </div>
 
-</footer>
 
-    </article>
-
-
-
-
-
-    
-  
-  
-  
-    <nav id="page-nav" class="clearfix">
-      
-      
-        <a class="page-number" href="/jp/">1</a> <!-- 기본 페이지 링크 수정 -->
-      
-      
-      
-    </nav>
-  
+<div class="next">
+<a href="/jp/tech/2024/10/14/github-blog-jekyll-local/"  title="Github blog local実行（Mac）">
+ <strong></strong><br/> 
+ <span>Github blog local実行（Mac）
+</span>
+</a>
 </div>
 
+</nav>
+
+	
+
+</div>  
 
       
       
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside toc-content">
+ 
+ <!--<%- toc(item.content) %>-->
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -519,7 +390,7 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
         transition: background-color 0.3s, color 0.3s;"
 
         href="
-                /
+                /tech/2024/10/14/github-blog-create/
             ">
 
         ko
@@ -537,7 +408,7 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
         transition: background-color 0.3s, color 0.3s;"
 
         href="
-                /jp/
+                /jp/tech/2024/10/14/github-blog-create/
             ">
 
         jp
@@ -626,6 +497,8 @@ $(document).ready(function(){
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
       
+      $('#toc.toc-aside').css('display', 'none');
+      
     }
   });
 });
@@ -634,9 +507,105 @@ $(document).ready(function(){
 
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#toc.toc-aside').toc({
+    title: "Contents",
+    showEffect: "none"
+  });
+  $('#toc.toc-article').toc({
+    title: "Contents",
+    showEffect: "show",
+    showSpeed: 0
+  });
+});
+</script>
 
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+/*
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      //$('.hoverqrcode').hide();
+  });
+  */
+});
+</script>
 
 
 
@@ -740,5 +709,5 @@ ga('send', 'pageview');
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
 

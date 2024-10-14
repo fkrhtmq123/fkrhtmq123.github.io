@@ -1,6 +1,6 @@
 
 
-        <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html >
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     
     
     
-    <title>fkrhtmq123.github.io</title>
+    <title>깃허브 블로그 로컬 실행(Mac) | fkrhtmq123.github.io</title>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -21,14 +21,14 @@
 
     <meta name="description" content="page.description">
     
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     
-    <meta property="og:title" content="">
-    <meta property="og:url" content="/jp/">
+    <meta property="og:title" content="깃허브 블로그 로컬 실행(Mac)">
+    <meta property="og:url" content="/tech/2024/10/14/github-blog-jekyll-local/">
     <meta property="og:site_name" content="fkrhtmq123.github.io">
     <meta property="og:description" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="">
+    <meta name="twitter:title" content="깃허브 블로그 로컬 실행(Mac)">
     <meta name="twitter:description" content="page.description">
     <meta name="twitter:creator" content="@">
     <link rel="publisher" href="">
@@ -79,16 +79,14 @@
 	
 	
 	
-
 		
 		<div id="imglogo">
-			<a href="/jp/"><img src="/assets/img/logo.png" alt="fkrhtmq123.github.io" title="fkrhtmq123.github.io"/></a>
+			<a href="/"><img src="/assets/img/logo.png" alt="fkrhtmq123.github.io" title="fkrhtmq123.github.io"/></a>
 		</div>
 		
-
 	<div id="textlogo">
-		<h1 class="site-name"><a href="/jp/" title="ドンウクの技術ラボ">ドンウクの技術ラボ</a></h1>
-		<h2 class="blog-motto">開発者として成功するための技術ブログ</h2>
+		<h1 class="site-name"><a href="/" title="김동욱의 기술 블로그">김동욱의 기술 블로그</a></h1>
+		<h2 class="blog-motto">개발자로서 성장하기 위한 기술 블로그</h2>
 	</div>
 	
 	<div class="navbar"><a class="navbutton navmobile" href="#" title="menu">
@@ -97,16 +95,16 @@
 		<ul>
 			<ul>
 				
-				<li><a href="/jp/">Home</a></li>
+				<li><a href="/">Home</a></li>
 				
-				<li><a href="/jp/archives">Archives</a></li>
+				<li><a href="/archives">Archives</a></li>
 				
-				<li><a href="/jp/about">About</a></li>
+				<li><a href="/about">About</a></li>
 				
 			<li>
 			
 			<form class="search" action="/search" method="get" accept-charset="utf-8">
-				<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="検索" />
+				<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="검색" />
 			</form>
 			
 			</li>
@@ -117,23 +115,16 @@
     </header>
     <div id="container">
       
-  <div id="main">
-  
-  
 
+
+
+<div id="main" class="post" itemscope itemprop="blogPost">
   
-    
-    
-    
-  
-    
-      
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+	<article itemprop="articleBody"> 
+	<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/jp/tech/2024/10/14/github-blog-jekyll-local/" title="Github blog local実行（Mac）" itemprop="url">Github blog local実行（Mac）</a>
+      <a href="/tech/2024/10/14/github-blog-jekyll-local/" title="깃허브 블로그 로컬 실행(Mac)" itemprop="url">깃허브 블로그 로컬 실행(Mac)</a>
   </h1>
   <p class="article-author">By
        
@@ -144,21 +135,125 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>前の投稿ではブログの作成までだったのですが実際にGitに反映する前にちゃんと動いているかlocalで実行して確認をする必要があります。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article toc-content" style="display: none;">
+		
+			<!--<%- toc(item.content) %>-->
+		
+		</div>
+		
+		<p>전 포스팅에는 블로그 생성까지만 했고 실제로 깃에 올려 반영하기 전에 잘 움직이고 있는지 로컬에서 실행하여 확인해야합니다.</p>
 
+<p>먼저, 깃허브 블로그는 루비로 만들어 져있기 때문에 루비를 설치를 해야합니다.</p>
 
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/jp/tech/2024/10/14/github-blog-jekyll-local/#more">Read More</a>
-          
-       </p>
-    </div>
-    
-    <footer class="article-footer clearfix">
+<h1 id="mac에-루비-설치">Mac에 루비 설치</h1>
+<p>1.Homebrew설치</p>
+<pre><code class="language-cmd">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+</code></pre>
+<p>설치 시에는 패스워드 입력이 필요하니 패스워드 입력창이 뜨면 입력</p>
+
+<p>2.brew패스를 패스 리스트에 추가</p>
+<pre><code class="language-cmd">echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' &gt;&gt; /Users/awesome-d/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"  
+</code></pre>
+
+<p>brew가 제대로 설치 되었는지 확인</p>
+<pre><code class="language-cmd">brew --version
+</code></pre>
+
+<p><img src="/assets/img/brew1.png" /></p>
+
+<p>3.루비설치</p>
+
+<pre><code class="language-rbenv```란">
+여러 루비 버전을 관리위한 프로그램입니다.&lt;br /&gt;
+
+```ruby-build```란?
+
+UNIX계열의 시스템상에 서로 다른 버전의 루비를 컴파일하여 설치하지 위한 ```rbenv install```커맨드를 제공하는  ```rbenv```의 플러그인 입니다.
+
+[https://ruby.studio-kingdom.com/rbenv/ruby_build/](https://ruby.studio-kingdom.com/rbenv/ruby_build/)
+
+```cmd
+brew install rbenv ruby-build
+</code></pre>
+
+<p>설치를 할 수있는 루버 버전을 확인</p>
+<pre><code class="language-cmd">rbenv install -l
+</code></pre>
+
+<p><img src="/assets/img/brew2.png" /></p>
+
+<p>최신 버전을 설치해도 되지만 최신 버전이 블로그 테마에서 제대로 움직이지 않을수도 있으니 두 개정도 버전 전을 설치합니다.</p>
+
+<pre><code class="language-cmd">rbenv install {원하는 버전}
+</code></pre>
+
+<p>필자는 <code class="language-plaintext highlighter-rouge">3.1.6</code>을 설치</p>
+
+<p>설치한 직후 <code class="language-plaintext highlighter-rouge">rbenv versions</code>를 하면 방금 설치한 버전과 system이라는 버전, 두 개가 있는데 현재 쓰고 있는 버전에는 버전 왼쪽에 (*)가 표시 되어있는데 처음에는 system이 되어 있다.</p>
+
+<p><img src="/assets/img/brew3.png" /></p>
+
+<pre><code class="language-cmd">rbenv global 3.1.6
+rbenv rehash
+</code></pre>
+
+<p>위 커맨드로 global버전을 3.1.6로 변경하고 루비 커맨드를 사용하기 위해 <code class="language-plaintext highlighter-rouge">rbenv rehash</code>를 실행합니다.<br />
+(만약 버전을 바꿀때는 그때마다 실행할 필요가 있습니다)</p>
+
+<p><img src="/assets/img/brew4.png" /></p>
+
+<p>4.rbenv로 설치된 루비 적용</p>
+
+<p>rbenv로 설치한 루비는 아직 Mac에 루비로서 적용이 안된 상태이기 때문에 rbenv를 패스에 적용.</p>
+
+<p>패스 파일을 열어</p>
+<pre><code class="language-cmd">open ~/.zshrc
+</code></pre>
+
+<p>밑의 두 줄을 패스 파일에 추가</p>
+<pre><code class="language-cmd">export PATH={$Home}/.rbenv/bin:$PATH &amp;&amp; \
+eval "$(rbenv init -)"
+</code></pre>
+
+<p>커맨드를 써서 패스 파일 적용</p>
+<pre><code class="language-cmd">source ~/.zshrc
+</code></pre>
+
+<h1 id="bundler-및-jekyll-설치">bundler 및 jekyll 설치</h1>
+<pre><code class="language-cmd">gem install bundler jekyll
+</code></pre>
+
+<p>제대로 설치가 됬는지 확인</p>
+<pre><code class="language-cmd">jekyll -v
+</code></pre>
+
+<h1 id="테마에서-사용하는-패키지-설치">테마에서 사용하는 패키지 설치</h1>
+<pre><code class="language-cmd">bundler install
+</code></pre>
+<p>위 커맨드를 사용하면 <code class="language-plaintext highlighter-rouge">Gemfile</code>안에 명시된 패키지를 설치를 합니다.</p>
+
+<h1 id="블로그-로컬-실행">블로그 로컬 실행</h1>
+<pre><code class="language-cmd">bundle exec jekyll serve
+</code></pre>
+<p>위 커맨드를 사용하면 로컬로 실행이 됩니다.</p>
+
+<p><br /><br /></p>
+
+<p>※로컬 실행 시 필자의 <code class="language-plaintext highlighter-rouge">Gemfile</code> 내용</p>
+
+<pre><code class="language-cmd">source 'https://rubygems.org'
+gem 'github-pages', group: :jekyll_plugins
+#gem 'jekyll-admin', group: :jekyll_plugins
+
+gem "webrick", "~&gt; 1.8.2"
+gem 'jekyll', '3.10.0'
+</code></pre>
+  
+	</div>
+	<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -171,8 +266,6 @@
       separator: '►'
   }) %>
   -->
-  
-  <a class="article-category-link" href="/categories/#jp">jp</a>
   
   <a class="article-category-link" href="/categories/#Tech">Tech</a>
   
@@ -200,228 +293,52 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://localhost:4000/tech/2024/10/14/github-blog-jekyll-local/" data-title="깃허브 블로그 로컬 실행(Mac) | fkrhtmq123.github.io" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
-
-    </article>
-
-
-
-
-
-    
-  
-    
-    
-    
-  
-    
-      
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/jp/tech/2024/10/14/github-blog-create/" title="Github blog作成" itemprop="url">Github blog作成</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Kim Dongwook" target="_blank" itemprop="author">Kim Dongwook</a>
-		
-  <p class="article-time">
-    <time datetime="2024-10-14 00:00:00 +0900" itemprop="datePublished">  2024-10-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>筆者は開発者として働きながら前の職場を含めて３年になるが技術ブログがないとダメな気がしていろんなブログを確認したのですがGithubでブログが作れると知りGithubでどうやってブログを作れるか書こうと思います。</p>
-
-
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/jp/tech/2024/10/14/github-blog-create/#more">Read More</a>
-          
-       </p>
-    </div>
-    
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <!--
-  <%- list_categories(item.categories, {
-      show_count: false,
-      class: 'article-category',
-      style: 'none',
-      separator: '►'
-  }) %>
-  -->
-  
-  <a class="article-category-link" href="/categories/#jp">jp</a>
-  
-  <a class="article-category-link" href="/categories/#Tech">Tech</a>
-  
-</div>
-
-
-  <div class="article-tags">
-  <!--
-  <% var tags = [];
-    item.tags.forEach(function(tag){
-      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
-    }); %>-->
-  <span></span> <!--<%- tags.join('') %>-->
-  
-  
-  <a href="/tags/#Github">Github</a>
-  
-  <a href="/tags/#Ruby">Ruby</a>
-  
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   
+	</article>
 	
-</div>
-
-</footer>
-
-    </article>
-
-
-
-
-
-    
-  
-    
-    
-    
-  
-    
-      
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/jp/tech/2024/10/05/aws-docker-nakama/" title="AWS EC2 linux環境に Nakamaインストール(Docker利用)" itemprop="url">AWS EC2 linux環境に Nakamaインストール(Docker利用)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Kim Dongwook" target="_blank" itemprop="author">Kim Dongwook</a>
-		
-  <p class="article-time">
-    <time datetime="2024-10-05 00:00:00 +0900" itemprop="datePublished">  2024-10-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="nakamaとは">Nakamaとは</h1>
-<p>ソーシャルまたはリアルタイムゲーム、アプリに使用可能な拡張型サーバーです。
-<br /><br />
-Nakamaサーバーを使用するとユーザー認証、ソーシャルネットワーキング、ストレージ、オンラインデータ交換などに使用が可能です。
-<br /><br /></p>
-
-
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/jp/tech/2024/10/05/aws-docker-nakama/#more">Read More</a>
-          
-       </p>
-    </div>
-    
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <!--
-  <%- list_categories(item.categories, {
-      show_count: false,
-      class: 'article-category',
-      style: 'none',
-      separator: '►'
-  }) %>
-  -->
-  
-  <a class="article-category-link" href="/categories/#jp">jp</a>
-  
-  <a class="article-category-link" href="/categories/#Tech">Tech</a>
-  
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/tech/2024/10/14/github-blog-create/" title="깃허브 블로그 생성">
+  <strong></strong><br/>
+  <span>
+  깃허브 블로그 생성</span>
+</a>
 </div>
 
 
-  <div class="article-tags">
-  <!--
-  <% var tags = [];
-    item.tags.forEach(function(tag){
-      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
-    }); %>-->
-  <span></span> <!--<%- tags.join('') %>-->
-  
-  
-  <a href="/tags/#AWS">AWS</a>
-  
-  <a href="/tags/#Linux">Linux</a>
-  
-  <a href="/tags/#Go">Go</a>
-  
-  <a href="/tags/#Docker">Docker</a>
-  
-  </div>
-
+<div class="next">
+<a href="/jp/tech/2024/10/14/github-blog-create/"  title="Github blog作成">
+ <strong></strong><br/> 
+ <span>Github blog作成
+</span>
+</a>
 </div>
 
+</nav>
 
-
-
-<div class="comments-count">
 	
-</div>
 
-</footer>
-
-    </article>
-
-
-
-
-
-    
-  
-  
-  
-    <nav id="page-nav" class="clearfix">
-      
-      
-        <a class="page-number" href="/jp/">1</a> <!-- 기본 페이지 링크 수정 -->
-      
-      
-      
-    </nav>
-  
-</div>
-
+</div>  
 
       
       
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside toc-content">
+ 
+ <!--<%- toc(item.content) %>-->
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -434,7 +351,7 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
 
 <div class="categorieslist">
 	
-		<p class="asidetitle">カテゴリー</p>
+		<p class="asidetitle">카테고리</p>
 	
 	
 	<ul>
@@ -458,7 +375,7 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
 
 <div class="tagslist">
 	
-		<p class="asidetitle">タグ</p>
+		<p class="asidetitle">태그</p>
 	
 	
 	<ul class="clearfix">
@@ -498,7 +415,7 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
 
   <div class="githubVisitant">
     <br />
-    <p class="asidetitle">訪問者</p>
+    <p class="asidetitle">방문자</p>
     <br />
     <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Ffkrhtmq123.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 </div>
@@ -511,15 +428,15 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
     <li id="lang" style="display: inline-block; margin-right: 10px;">
         <a 
         style="text-align: center; display: inline-block; padding: 10px 15px; 
-        background-color: #f8f9fa; 
-        color: #007bff; 
+        background-color: #007bff; 
+        color: #ffffff; 
         border: 1px solid #007bff; 
         border-radius: 5px; 
         text-decoration: none; 
         transition: background-color 0.3s, color 0.3s;"
 
         href="
-                /
+                /tech/2024/10/14/github-blog-jekyll-local/
             ">
 
         ko
@@ -529,15 +446,15 @@ Nakamaサーバーを使用するとユーザー認証、ソーシャルネッ�
     <li id="lang" style="display: inline-block; margin-right: 10px;">
         <a 
         style="text-align: center; display: inline-block; padding: 10px 15px; 
-        background-color: #007bff; 
-        color: #ffffff; 
+        background-color: #f8f9fa; 
+        color: #007bff; 
         border: 1px solid #007bff; 
         border-radius: 5px; 
         text-decoration: none; 
         transition: background-color 0.3s, color 0.3s;"
 
         href="
-                /jp/
+                /jp//tech/2024/10/14/github-blog-jekyll-local/
             ">
 
         jp
@@ -626,6 +543,8 @@ $(document).ready(function(){
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
       
+      $('#toc.toc-aside').css('display', 'none');
+      
     }
   });
 });
@@ -634,9 +553,105 @@ $(document).ready(function(){
 
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#toc.toc-aside').toc({
+    title: "Contents",
+    showEffect: "none"
+  });
+  $('#toc.toc-article').toc({
+    title: "Contents",
+    showEffect: "show",
+    showSpeed: 0
+  });
+});
+</script>
 
 
 
+<script type="text/javascript">
+$(document).ready(function(){
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+/*
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      //$('.hoverqrcode').hide();
+  });
+  */
+});
+</script>
 
 
 
@@ -740,5 +755,5 @@ ga('send', 'pageview');
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
 
