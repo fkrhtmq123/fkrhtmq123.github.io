@@ -28,6 +28,7 @@ defaults:
 
 #### Pagination
 paginate: 20
+paginate_path: "/page:num"
 
 #### Site
 # title : 김동욱의 기술 블로그

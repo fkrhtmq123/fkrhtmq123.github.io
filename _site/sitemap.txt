@@ -4,12 +4,12 @@
 /jp/archives/
 /atom.xml
 /jp/
-/categories/
-/
-/archives/
-/about/
-/tags/
 /search/
+/categories/
+/archives/
+/tags/
+/about/
+/
 /search/search.json
 /sitemap.txt
 /sitemap.xml
