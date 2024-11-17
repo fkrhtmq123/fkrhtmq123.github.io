@@ -16,7 +16,7 @@ lang: ko
 
 먼저, 루트 폴더에 ```lobbyMatch.go``` 파일 생성
 
-```Go
+```sh
 package main
 
 import (
@@ -60,7 +60,7 @@ TickRate의 영향은 밑에와 같습니다.<br />
 ・TickRate가 높을 수록 서버에서 더 자주 계산을 수행해야 하므로 CPU와 메모리 사용량이 증가 합니다.<br />
 ・낮은 TickRate는 서버 부하를 줄이는데 유리하지만, 클라이언트의 게임 플레이가 부드럽지 않을 수 있습니다.
 
-```Go
+```sh
 func CreateMatch(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runtime.NakamaModule) (runtime.Match, error) {
 	return &LobbyMatch{
 		state: &LobbyMatchState{
@@ -73,7 +73,7 @@ func CreateMatch(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runt
 ```
 위 코드는 초당 10번의 상태 계산하도록 설정한 함수이며 return 값이 runtime.Match이기 때문에 Match에 대한 함수를 설정해줘야합니다.
 
-```Go
+```sh
 // runtime안의 Match에 있는 함수를 lobbyMatch.go에 작성합니다.
 type Match interface {
 	MatchInit(ctx context.Context, logger Logger, db *sql.DB, nk NakamaModule, params map[string]interface{}) (interface{}, int, string)
@@ -88,7 +88,7 @@ type Match interface {
 
 위 코드 중에 MatchJoin, MatchLeave 등 에 플레이어가 매치 가입을 하거나 떠날때는 메세지를 보내도록 합니다.
 
-```Go
+```sh
 func encodeMessage(message map[string]interface{}) []byte {
 	encoded, _ := json.Marshal(message)
 	return encoded
@@ -115,7 +115,7 @@ func (m *LobbyMatch) MatchLeave(ctx context.Context, logger runtime.Logger, db *
 
 ```lobbyMatch.go``` 작성 완료 후, ```main.go``` 의 ```InitModule```에 매치 기능을 모듈로서 설정
 
-```Go
+```sh
 func InitModule(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runtime.NakamaModule, initialzer runtime.Initializer) error {
 	initStart := time.Now()
 
