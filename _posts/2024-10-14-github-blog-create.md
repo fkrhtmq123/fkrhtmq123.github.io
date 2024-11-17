@@ -19,7 +19,7 @@ lang: ko
 <img src="/assets/img/git_blog_create_project.png">
 
 [Repository name] 에는
-```cmd
+```sh
 [USERNAME].github.io
 ```
 
@@ -34,7 +34,7 @@ lang: ko
 <br />
 복사한 주소를 클론을 하고 싶은 폴더로 이동하여 클론
 
-```cmd
+```sh
 cd developer
 git clone https://github.com/fkrhtmq123/fkrhtmq123.github.io.git
 ```

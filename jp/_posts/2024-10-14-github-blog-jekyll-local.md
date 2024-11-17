@@ -16,19 +16,19 @@ lang: jp
 
 # MacにRubyインストール
 1.Homebrewインストール
-```cmd
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 インストール時にはパスワード入力が必要なので入力窓が出れば入力
 
 2.brewパスをパスリストに追加
-```cmd
+```sh
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/awesome-d/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"  
 ```
 
 brewがちゃんとインストールされてるか確認
-```cmd
+```sh
 brew --version
 ```
 
@@ -46,12 +46,12 @@ UNIX系のシステム上で異なるバージョンのRubyをコンパイルし
 
 [https://ruby.studio-kingdom.com/rbenv/ruby_build/](https://ruby.studio-kingdom.com/rbenv/ruby_build/)
 
-```cmd
+```sh
 brew install rbenv ruby-build
 ```
 
 インストールができるRubyのバージョンのを確認します。
-```cmd
+```sh
 rbenv install -l
 ```
 
@@ -59,7 +59,7 @@ rbenv install -l
 
 最新バージョンをインストールしてもいいのですが最新バージョンでブログテーマがちゃんと動かない場合もなるので２つくらい前のバージョンをインストールします。
 
-```cmd
+```sh
 rbenv install {インストールするバージョン}
 ```
 
@@ -69,7 +69,7 @@ rbenv install {インストールするバージョン}
 
 <img src="/assets/img/brew3.png">
 
-```cmd
+```sh
 rbenv global 3.1.6
 rbenv rehash
 ```
@@ -84,39 +84,39 @@ rbenv rehash
 rbenvでインストールしたRubyはまだmacMacにRubyとして適用されてない状態なのでrbenvをパスに適用します。
 
 パスのファイルを開きます。
-```cmd
+```sh
 open ~/.zshrc
 ```
 
 下記の２列をパスファイルに追加
-```cmd
+```sh
 export PATH={$Home}/.rbenv/bin:$PATH && \
 eval "$(rbenv init -)"
 ```
 
 コマンドを使ってパスファイルの修正内容を適用
-```cmd
+```sh
 source ~/.zshrc
 ```
 
 # bundler 及び jekyll インストール
-```cmd
+```sh
 gem install bundler jekyll
 ```
 
 ちゃんとインストールされているか確認
-```cmd
+```sh
 jekyll -v
 ```
 
 # テーマで使用しているパッケージをインストール
-```cmd
+```sh
 bundler install
 ```
 上記のコマンドを使用して```Gemfile```の中にあるパッケージをインストールします。
 
 # ブログのlocal実行
-```cmd
+```sh
 bundle exec jekyll serve
 ```
 上記のコマンドを使用してlocal実行されます。
@@ -125,7 +125,7 @@ bundle exec jekyll serve
 
 ※localで実行する時の筆者の```Gemfile``` 内容
 
-```cmd
+```sh
 source 'https://rubygems.org'
 gem 'github-pages', group: :jekyll_plugins
 #gem 'jekyll-admin', group: :jekyll_plugins

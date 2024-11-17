@@ -19,7 +19,7 @@ Gitブログを作るためにまずGitプロジェクト作成を作成しま�
 <img src="/assets/img/git_blog_create_project.png">
 
 [Repository name] には
-```cmd
+```sh
 [USERNAME].github.io
 ```
 
@@ -34,7 +34,7 @@ Gitブログを作るためにまずGitプロジェクト作成を作成しま�
 <br />
 コピーしたURLをCloneしたいフォルダに移動し、Clone
 
-```cmd
+```sh
 cd developer
 git clone https://github.com/fkrhtmq123/fkrhtmq123.github.io.git
 ```

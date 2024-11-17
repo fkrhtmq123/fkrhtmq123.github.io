@@ -16,19 +16,19 @@ lang: ko
 
 # Mac에 루비 설치
 1.Homebrew설치
-```cmd
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 설치 시에는 패스워드 입력이 필요하니 패스워드 입력창이 뜨면 입력
 
 2.brew패스를 패스 리스트에 추가
-```cmd
+```sh
 echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/awesome-d/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"  
 ```
 
 brew가 제대로 설치 되었는지 확인
-```cmd
+```sh
 brew --version
 ```
 
@@ -46,12 +46,12 @@ UNIX계열의 시스템상에 서로 다른 버전의 루비를 컴파일하여 
 
 [https://ruby.studio-kingdom.com/rbenv/ruby_build/](https://ruby.studio-kingdom.com/rbenv/ruby_build/)
 
-```cmd
+```sh
 brew install rbenv ruby-build
 ```
 
 설치를 할 수있는 루버 버전을 확인 
-```cmd
+```sh
 rbenv install -l
 ```
 
@@ -59,7 +59,7 @@ rbenv install -l
 
 최신 버전을 설치해도 되지만 최신 버전이 블로그 테마에서 제대로 움직이지 않을수도 있으니 두 개정도 버전 전을 설치합니다.
 
-```cmd
+```sh
 rbenv install {원하는 버전}
 ```
 
@@ -69,7 +69,7 @@ rbenv install {원하는 버전}
 
 <img src="/assets/img/brew3.png">
 
-```cmd
+```sh
 rbenv global 3.1.6
 rbenv rehash
 ```
@@ -84,39 +84,39 @@ rbenv rehash
 rbenv로 설치한 루비는 아직 Mac에 루비로서 적용이 안된 상태이기 때문에 rbenv를 패스에 적용.
 
 패스 파일을 열어
-```cmd
+```sh
 open ~/.zshrc
 ```
 
 밑의 두 줄을 패스 파일에 추가
-```cmd
+```sh
 export PATH={$Home}/.rbenv/bin:$PATH && \
 eval "$(rbenv init -)"
 ```
 
 커맨드를 써서 패스 파일 적용
-```cmd
+```sh
 source ~/.zshrc
 ```
 
 # bundler 및 jekyll 설치
-```cmd
+```sh
 gem install bundler jekyll
 ```
 
 제대로 설치가 됬는지 확인
-```cmd
+```sh
 jekyll -v
 ```
 
 # 테마에서 사용하는 패키지 설치
-```cmd
+```sh
 bundler install
 ```
 위 커맨드를 사용하면 ```Gemfile```안에 명시된 패키지를 설치를 합니다.
 
 # 블로그 로컬 실행
-```cmd
+```sh
 bundle exec jekyll serve
 ```
 위 커맨드를 사용하면 로컬로 실행이 됩니다.
@@ -125,7 +125,7 @@ bundle exec jekyll serve
 
 ※로컬 실행 시 필자의 ```Gemfile``` 내용
 
-```cmd
+```sh
 source 'https://rubygems.org'
 gem 'github-pages', group: :jekyll_plugins
 #gem 'jekyll-admin', group: :jekyll_plugins
