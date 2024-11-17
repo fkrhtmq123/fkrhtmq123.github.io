@@ -12,7 +12,7 @@ tags:
 lang: jp
 ---
 
-[Nakama설치](/_posts/2024-10-05-aws-docker-nakama.md)で作った基本サーバーコードにマッチをするための機能を追加
+[Nakama설치](https://fkrhtmq123.github.io/jp/tech/2024/10/05/aws-docker-nakama/)で作った基本サーバーコードにマッチをするための機能を追加
 
 まず, ルートフォルダに ```lobbyMatch.go``` ファイルを作成
 

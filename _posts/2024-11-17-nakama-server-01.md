@@ -12,7 +12,7 @@ tags:
 lang: ko
 ---
 
-[Nakama설치](/_posts/2024-10-05-aws-docker-nakama.md)에서 만든 기본 서버 코드에 매치를 하는 기능을 추가
+[Nakama설치](https://fkrhtmq123.github.io/tech/2024/10/05/aws-docker-nakama/)에서 만든 기본 서버 코드에 매치를 하는 기능을 추가
 
 먼저, 루트 폴더에 ```lobbyMatch.go``` 파일 생성
 
