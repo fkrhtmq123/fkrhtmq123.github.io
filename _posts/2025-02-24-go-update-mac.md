@@ -1,6 +1,6 @@
 ---
 layout: post
-title: go version 업데이트
+title: go version 업데이트(Mac)
 categories: 
 - Tech
 tags:
