@@ -519,6 +519,187 @@
           padding: 0 18px 22px;
         }
       }
+
+      @media (max-width: 768px) {
+        body.home-page header {
+          padding: 18px 16px 20px;
+        }
+
+        body.home-page header > div {
+          gap: 14px;
+        }
+
+        body.home-page header nav {
+          margin-top: 10px;
+        }
+
+        body.home-page header nav > ul {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        body.home-page header nav > ul > li:last-child {
+          grid-column: 1 / -1;
+        }
+
+        body.home-page header nav li a {
+          padding: 12px 14px;
+          border-radius: 16px;
+          font-size: 0.96rem;
+        }
+
+        body.home-page header nav .search {
+          display: grid;
+          gap: 8px;
+        }
+
+        body.home-page header nav .search input[type="search"],
+        body.home-page header nav .search input[type="text"] {
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        body.home-page header .home-profile {
+          margin-top: 16px;
+          padding: 14px;
+          border-radius: 18px;
+        }
+
+        body.home-page header .home-profile .profile-copy {
+          font-size: 0.9rem;
+          line-height: 1.55;
+        }
+
+        body.home-page header .home-profile .profile-stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+          margin-top: 12px;
+        }
+
+        body.home-page header .home-profile .profile-stat {
+          padding: 10px 12px;
+          border-radius: 14px;
+        }
+
+        body.home-page #container {
+          padding: 20px 14px 20px;
+        }
+
+        body.home-page #main {
+          gap: 14px;
+        }
+
+        body.home-page #main .home-hero {
+          gap: 14px;
+        }
+
+        body.home-page #main .home-hero .hero-copy {
+          padding: 24px 20px;
+          min-height: auto;
+        }
+
+        body.home-page #main .home-hero h1 {
+          font-size: clamp(2rem, 10vw, 3rem);
+          max-width: none;
+        }
+
+        body.home-page #main .home-hero .hero-copy p {
+          font-size: 0.98rem;
+        }
+
+        body.home-page #main .home-hero .hero-actions {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        body.home-page #main .home-hero .hero-actions a,
+        body.home-page #main .home-hero .hero-actions span {
+          width: 100%;
+        }
+
+        body.home-page #main .home-hero .hero-metrics {
+          padding: 20px;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        body.home-page #main .home-hero .metric-card {
+          padding: 14px 15px;
+          border-radius: 18px;
+        }
+
+        body.home-page #main .home-hero .metric-card b {
+          font-size: 1.4rem;
+        }
+
+        body.home-page #main section.post a {
+          min-height: auto;
+          padding: 18px;
+          border-radius: 20px;
+        }
+
+        body.home-page #main section.post a h1 {
+          font-size: 1.18rem;
+        }
+
+        body.home-page #main section.post a p {
+          font-size: 0.92rem;
+        }
+
+        body.home-page #page-nav {
+          margin-top: 4px;
+          padding-top: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body.home-page header {
+          padding: 16px 14px 18px;
+        }
+
+        body.home-page header nav > ul {
+          grid-template-columns: 1fr;
+        }
+
+        body.home-page header nav > ul > li:last-child {
+          grid-column: auto;
+        }
+
+        body.home-page header .home-profile .profile-stats {
+          grid-template-columns: 1fr;
+        }
+
+        body.home-page #container {
+          padding: 18px 12px 18px;
+        }
+
+        body.home-page #main .home-hero .hero-copy,
+        body.home-page #main .home-hero .hero-metrics {
+          padding: 18px 16px;
+        }
+
+        body.home-page #main .home-hero .hero-badge {
+          padding: 8px 12px;
+          font-size: 0.82rem;
+        }
+
+        body.home-page #main .home-hero h1 {
+          font-size: clamp(1.8rem, 11vw, 2.45rem);
+          line-height: 1;
+        }
+
+        body.home-page #main .home-hero .hero-copy p {
+          font-size: 0.94rem;
+        }
+
+        body.home-page #main .home-hero .metric-card b {
+          font-size: 1.25rem;
+        }
+
+        body.home-page #main section.post a {
+          padding: 16px;
+        }
+      }
     </style>
     {% endif %}
 </head>
