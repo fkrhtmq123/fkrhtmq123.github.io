@@ -41,6 +41,7 @@ baseurl:
 
 plugins:
   - jekyll-polyglot
+  - jemoji
 
 #### Language
 # language: en    ## blog site languages: en, de
@@ -162,5 +163,3 @@ simple_jekyll_search:
   enable: true
   fulltext: false
 
-gems:
- - jemoji

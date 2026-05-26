@@ -34,14 +34,17 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
-          bundler-cache: true
+          bundler-cache: false
+
+      - name: Install dependencies
+        run: bundle install --path vendor/bundle
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Build site
         run: |
-          bundle exec jekyll build
+          bundle exec jekyll build --exclude vendor,bundle,node_modules
         env:
           JEKYLL_ENV: production
 
