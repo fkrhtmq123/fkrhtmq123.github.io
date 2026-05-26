@@ -30,13 +30,25 @@ jobs:
           submodules: false
           lfs: false
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Build site
+        run: |
+          bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ./_site
 
       - name: Deploy
         id: deployment
