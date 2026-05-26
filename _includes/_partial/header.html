@@ -28,10 +28,9 @@
 	</a></div>
 	<nav class="animated">
 		<ul>
-			<ul>
-				{% for m in lang.menu %}
-				<li><a href="{{ site.baseurl }}{{ m[1] }}">{{ m[0] }}</a></li>
-				{% endfor %}
+			{% for m in lang.menu %}
+			<li><a href="{{ site.baseurl }}{{ m[1] }}">{{ m[0] }}</a></li>
+			{% endfor %}
 			<li>
 			{% if site.google_cse.enable %}
 			<form class="search" action="{{ site.baseurl }}/search/" method="get" accept-charset="utf-8">
@@ -62,4 +61,20 @@
 			</li>
 		</ul>
 	</nav>
+	{% if page.layout == 'default' %}
+	<div class="home-profile">
+		<div class="profile-title">{% if page.lang == 'jp' %}開発者のためのメモブログ{% else %}개발자를 위한 메모 블로그{% endif %}</div>
+		<div class="profile-copy">
+			{% if page.lang == 'jp' %}
+			サイドバーとカード中心のレイアウトで、記事をさっと見渡しやすくまとめています。
+			{% else %}
+			사이드바와 카드 중심 레이아웃으로, 글을 빠르게 훑어보기 좋게 구성했습니다.
+			{% endif %}
+		</div>
+		<div class="profile-stats">
+			<div class="profile-stat"><b>{{ site.posts | size }}</b><span>{% if page.lang == 'jp' %}posts{% else %}posts{% endif %}</span></div>
+			<div class="profile-stat"><b>{{ site.categories | size }}</b><span>{% if page.lang == 'jp' %}topics{% else %}topics{% endif %}</span></div>
+		</div>
+	</div>
+	{% endif %}
 </div>

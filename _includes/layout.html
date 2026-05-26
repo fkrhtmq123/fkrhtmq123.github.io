@@ -1,6 +1,25 @@
+{% assign body_class = 'page' %}
+{% if page.layout == 'default' %}
+  {% assign body_class = 'home-page' %}
+{% elsif page.layout == 'post' %}
+  {% assign body_class = 'page-post' %}
+{% elsif page.layout == 'photo' %}
+  {% assign body_class = 'page-photo' %}
+{% elsif page.layout == 'page' %}
+  {% assign body_class = 'page-page' %}
+{% elsif page.layout == 'search' %}
+  {% assign body_class = 'page-search' %}
+{% elsif page.layout == 'categories' %}
+  {% assign body_class = 'page-categories' %}
+{% elsif page.layout == 'tags' %}
+  {% assign body_class = 'page-tags' %}
+{% elsif page.layout == 'archives' %}
+  {% assign body_class = 'page-archives' %}
+{% endif %}
+
 {% if page.layout == 'post' or page.layout == 'photo' %}
  {% include _partial/head.html %}
-  <body>
+  <body class="{{ body_class }}">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3MFBQQ8"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -20,7 +39,7 @@
 </html>
 {% elsif page.layout == 'page' %}
     {% include _partial/head.html %}
-      <body>
+      <body class="{{ body_class }}">
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3MFBQQ8"
           height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -37,7 +56,7 @@
      </html>
 {% elsif page.layout == 'search' %}
 {% include _partial/head.html %}
-    <body>
+    <body class="{{ body_class }}">
       <!-- Google Tag Manager (noscript) -->
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3MFBQQ8"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -54,7 +73,7 @@
    </html>
 {% elsif page.layout == 'categories' or page.layout == 'tags' or page.layout == 'archives' %}
   {% include _partial/head.html %}
-    <body>
+    <body class="{{ body_class }}">
       <!-- Google Tag Manager (noscript) -->
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3MFBQQ8"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -71,7 +90,7 @@
    </html>
 {% else %}
         {% include _partial/head.html %}
-  <body>
+  <body class="{{ body_class }}">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3MFBQQ8"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -80,7 +99,7 @@
         {% include _partial/header.html %}
     </header>
     <div id="container">
-      {{ content }}
+      <main id="main">{{ content }}</main>
       {% assign item = page %}
       {% assign table = false %}
       {% include _partial/sidebar.html %}

@@ -2,7 +2,7 @@
 <html {% if site.language %}lang="{{ site.language }}"{% endif %}>
 <head>
   <meta charset="UTF-8">
-    {% assign title = page.title %}
+    {% assign title = page.title | default: lang.title | default: site.title %}
     {% if page.layout == 'archives' %}
     {% assign title = lang.archive_a %}
     {% endif %}
@@ -15,7 +15,7 @@
     <title>{% if title %}{{ title }} | {% endif %}{{ site.title }}</title>
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {% if site.author.name %}
     <meta name="author" content="{{ site.author.name }}">
     {% endif %}
@@ -23,19 +23,20 @@
     {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
     <!--<%- open_graph({twitter_id: theme.author.twitter, google_plus: theme.author.google_plus}) %>-->
 
-    <meta name="description" content="page.description">
+    {% assign page_description = page.description | default: lang.tagline | default: site.title %}
+    <meta name="description" content="{{ page_description | escape }}">
     {% if page.layout == 'post' %}
     <meta property="og:type" content="article">
     {% else %}
     <meta property="og:type" content="website">
     {% endif %}
-    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:title" content="{{ title | escape }}">
     <meta property="og:url" content="{{ site.baseurl }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:description" content="{{ page.description }}">
+    <meta property="og:description" content="{{ page_description | escape }}">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ page.title }}">
-    <meta name="twitter:description" content="page.description">
+    <meta name="twitter:title" content="{{ title | escape }}">
+    <meta name="twitter:description" content="{{ page_description | escape }}">
     <meta name="twitter:creator" content="@{{ site.author.twitter }}">
     <link rel="publisher" href="{{ site.author.google_plus }}">
 
@@ -49,6 +50,10 @@
     <link rel="apple-touch-icon" href="{{ site.baseurl }}{{ site.assets }}/{{ site.apple_icon }}">
     <link rel="apple-touch-icon-precomposed" href="{{ site.baseurl }}{{ site.assets }}/{{ site.apple_icon }}">
     {% endif %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ site.baseurl }}{{ site.assets }}/css/style.css" type="text/css">
     <link rel="stylesheet" href="{{ site.baseurl }}{{ site.assets }}/css/highlight.css" type="text/css">
@@ -96,4 +101,385 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4834682519511552"
       crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-4834682519511552">
+
+    {% if page.layout == 'default' %}
+    <style>
+      body.home-page {
+        display: grid;
+        grid-template-columns: 320px minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+        background: radial-gradient(circle at top left, #16213b 0%, #0b1020 42%, #060814 100%);
+        color: #eef2ff;
+        font-family: 'Noto Sans KR', 'Droid Sans Fallback', 'Malgun Gothic', 'Apple SD Gothic Neo', Inter, system-ui, sans-serif;
+      }
+
+      body.home-page a {
+        color: inherit;
+      }
+
+      body.home-page header {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        position: sticky;
+        top: 0;
+        min-height: 100vh;
+        width: 320px;
+        padding: 28px 22px;
+        background: rgba(16, 24, 47, 0.86);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      body.home-page header #textlogo,
+      body.home-page header #imglogo {
+        margin-bottom: 22px;
+      }
+
+      body.home-page header .site-name a {
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+      }
+
+      body.home-page header .blog-motto {
+        color: #9ca3af;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-top: 10px;
+      }
+
+      body.home-page header .navbar {
+        display: none;
+      }
+
+      body.home-page header nav {
+        display: block !important;
+        margin-top: 22px;
+      }
+
+      body.home-page header nav > ul {
+        display: grid;
+        gap: 10px;
+      }
+
+      body.home-page header nav > ul > ul {
+        display: contents;
+      }
+
+      body.home-page header nav li a {
+        display: block;
+        padding: 13px 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        color: #dbe4ff;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+
+      body.home-page header nav li a:hover {
+        transform: translateX(2px);
+        background: rgba(139, 92, 246, 0.16);
+        border-color: rgba(139, 92, 246, 0.34);
+      }
+
+      body.home-page header .home-profile {
+        margin-top: 24px;
+        padding: 18px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, rgba(139, 92, 246, 0.18), rgba(34, 211, 238, 0.08));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      body.home-page header .home-profile .profile-title {
+        color: #fff;
+        font-size: 1.05rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      body.home-page header .home-profile .profile-copy {
+        color: #cbd5e1;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      body.home-page header .home-profile .profile-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      body.home-page header .home-profile .profile-stat {
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      body.home-page header .home-profile .profile-stat b {
+        display: block;
+        color: #fff;
+        font-size: 1.25rem;
+      }
+
+      body.home-page header .home-profile .profile-stat span {
+        display: block;
+        color: #9ca3af;
+        font-size: 0.82rem;
+        margin-top: 2px;
+      }
+
+      body.home-page #container {
+        grid-column: 2;
+        grid-row: 1;
+        width: auto;
+        margin: 0;
+        padding: 36px 40px 28px;
+      }
+
+      body.home-page #main {
+        width: 100%;
+        float: none;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        align-items: start;
+      }
+
+      body.home-page #main .home-hero {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+        margin-bottom: 6px;
+      }
+
+      body.home-page #main .home-hero .hero-copy,
+      body.home-page #main .home-hero .hero-metrics {
+        background: rgba(16, 24, 47, 0.82);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 28px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+      }
+
+      body.home-page #main .home-hero .hero-copy {
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 360px;
+      }
+
+      body.home-page #main .home-hero .hero-badge {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: rgba(139, 92, 246, 0.18);
+        color: #c4b5fd;
+        font-weight: 800;
+        font-size: 0.86rem;
+      }
+
+      body.home-page #main .home-hero h1 {
+        color: #fff;
+        font-size: clamp(2.6rem, 5vw, 4.8rem);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        margin: 18px 0 14px;
+        max-width: 10ch;
+      }
+
+      body.home-page #main .home-hero .hero-copy p {
+        color: #cbd5e1;
+        font-size: 1.05rem;
+        line-height: 1.65;
+        max-width: 42ch;
+      }
+
+      body.home-page #main .home-hero .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+
+      body.home-page #main .home-hero .hero-actions a,
+      body.home-page #main .home-hero .hero-actions span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border-radius: 999px;
+        font-weight: 800;
+      }
+
+      body.home-page #main .home-hero .hero-actions .primary {
+        background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+        color: #081021;
+      }
+
+      body.home-page #main .home-hero .hero-actions .secondary {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #e5e7eb;
+      }
+
+      body.home-page #main .home-hero .hero-metrics {
+        padding: 24px;
+        display: grid;
+        gap: 16px;
+      }
+
+      body.home-page #main .home-hero .metric-card {
+        padding: 18px 20px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      body.home-page #main .home-hero .metric-card b {
+        display: block;
+        color: #fff;
+        font-size: 1.7rem;
+        line-height: 1;
+      }
+
+      body.home-page #main .home-hero .metric-card span {
+        display: block;
+        color: #9ca3af;
+        font-size: 0.84rem;
+        margin-top: 6px;
+      }
+
+      body.home-page #main .home-feed-label {
+        grid-column: 1 / -1;
+        color: #9ca3af;
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin: 4px 0 -2px;
+      }
+
+      body.home-page #main section.post {
+        margin: 0;
+        background: transparent;
+      }
+
+      body.home-page #main section.post a {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 178px;
+        padding: 20px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+        transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+      }
+
+      body.home-page #main section.post a:hover {
+        transform: translateY(-3px);
+        border-color: rgba(139, 92, 246, 0.34);
+        background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255, 255, 255, 0.03));
+      }
+
+      body.home-page #main section.post a h1 {
+        color: #f8fafc;
+        font-size: 1.35rem;
+        line-height: 1.15;
+        letter-spacing: -0.04em;
+      }
+
+      body.home-page #main section.post a p {
+        color: #9ca3af;
+        line-height: 1.65;
+        font-size: 0.95rem;
+      }
+
+      body.home-page #main section.post a time {
+        margin-top: auto;
+        color: #c4b5fd;
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+
+      body.home-page #page-nav {
+        grid-column: 1 / -1;
+        margin: 10px 0 0;
+        padding: 12px 0 0;
+      }
+
+      body.home-page #page-nav .page-number,
+      body.home-page #page-nav .extend {
+        color: #cbd5e1;
+      }
+
+      body.home-page #page-nav .page-number.current {
+        color: #fff !important;
+      }
+
+      body.home-page #asidepart,
+      body.home-page .openaside,
+      body.home-page .closeaside,
+      body.home-page #toc {
+        display: none !important;
+      }
+
+      body.home-page footer {
+        grid-column: 2;
+        grid-row: 2;
+        padding: 0 40px 30px;
+        color: #94a3b8;
+      }
+
+      @media (max-width: 1200px) {
+        body.home-page {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto auto;
+        }
+
+        body.home-page header {
+          grid-column: 1;
+          grid-row: 1;
+          position: static;
+          width: auto;
+          min-height: auto;
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        body.home-page #container {
+          grid-column: 1;
+          grid-row: 2;
+          padding: 24px 18px;
+        }
+
+        body.home-page #main .home-hero {
+          grid-template-columns: 1fr;
+        }
+
+        body.home-page #main {
+          grid-template-columns: 1fr;
+        }
+
+        body.home-page footer {
+          grid-column: 1;
+          grid-row: 3;
+          padding: 0 18px 22px;
+        }
+      }
+    </style>
+    {% endif %}
 </head>
