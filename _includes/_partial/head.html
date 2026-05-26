@@ -326,6 +326,86 @@
         height: auto;
       }
 
+      body.home-page.page-post #main > article footer.article-footer,
+      body.home-page.page-photo #main > article footer.article-footer,
+      body.home-page.page-post article footer.article-footer,
+      body.home-page.page-photo article footer.article-footer {
+        padding: 0 32px 28px;
+        background: rgba(16, 24, 47, 0.82);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        color: #e2e8f0;
+      }
+
+      body.home-page.page-post #main > article footer.article-footer .article-catetags,
+      body.home-page.page-photo #main > article footer.article-footer .article-catetags,
+      body.home-page.page-post article footer.article-footer .article-catetags,
+      body.home-page.page-photo article footer.article-footer .article-catetags {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 10px;
+      }
+
+      body.home-page.page-post #main > article footer.article-footer .article-catetags > div,
+      body.home-page.page-photo #main > article footer.article-footer .article-catetags > div,
+      body.home-page.page-post article footer.article-footer .article-catetags > div,
+      body.home-page.page-photo article footer.article-footer .article-catetags > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      body.home-page.page-post #main > article footer.article-footer .article-catetags > div > span,
+      body.home-page.page-photo #main > article footer.article-footer .article-catetags > div > span,
+      body.home-page.page-post article footer.article-footer .article-catetags > div > span,
+      body.home-page.page-photo article footer.article-footer .article-catetags > div > span {
+        color: #94a3b8;
+      }
+
+      body.home-page.page-post #main > article footer.article-footer .article-catetags a,
+      body.home-page.page-photo #main > article footer.article-footer .article-catetags a,
+      body.home-page.page-post article footer.article-footer .article-catetags a,
+      body.home-page.page-photo article footer.article-footer .article-catetags a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #e5e7eb;
+        font-size: 0.86rem;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      body.home-page.page-post #main > article footer.article-footer .article-catetags a:hover,
+      body.home-page.page-photo #main > article footer.article-footer .article-catetags a:hover,
+      body.home-page.page-post article footer.article-footer .article-catetags a:hover,
+      body.home-page.page-photo article footer.article-footer .article-catetags a:hover {
+        background: rgba(139, 92, 246, 0.18);
+        border-color: rgba(139, 92, 246, 0.34);
+        color: #ffffff;
+      }
+
+      body.home-page.page-post #main > article footer.article-footer .article-share,
+      body.home-page.page-photo #main > article footer.article-footer .article-share,
+      body.home-page.page-post article footer.article-footer .article-share,
+      body.home-page.page-photo article footer.article-footer .article-share {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        background: transparent;
+      }
+
+      body.home-page.page-post #main > article footer.article-footer .article-share .share,
+      body.home-page.page-photo #main > article footer.article-footer .article-share .share,
+      body.home-page.page-post article footer.article-footer .article-share .share,
+      body.home-page.page-photo article footer.article-footer .article-share .share {
+        background: transparent;
+      }
+
       @media (max-width: 1023px) {
         body.home-page.page-post #main > article,
         body.home-page.page-photo #main > article,
@@ -350,6 +430,13 @@
         body.home-page.page-photo article .article-content {
           padding: 22px 24px 28px;
         }
+
+        body.home-page.page-post #main > article footer.article-footer,
+        body.home-page.page-photo #main > article footer.article-footer,
+        body.home-page.page-post article footer.article-footer,
+        body.home-page.page-photo article footer.article-footer {
+          padding: 0 24px 24px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -372,6 +459,43 @@
         body.home-page.page-post article header.article-info,
         body.home-page.page-photo article header.article-info {
           padding: 18px 18px 14px;
+        }
+
+        body.home-page.page-post #main > article .article-content,
+        body.home-page.page-photo #main > article .article-content,
+        body.home-page.page-post article .article-content,
+        body.home-page.page-photo article .article-content {
+          padding: 18px 18px 22px;
+        }
+
+        body.home-page.page-post #main > article footer.article-footer,
+        body.home-page.page-photo #main > article footer.article-footer,
+        body.home-page.page-post article footer.article-footer,
+        body.home-page.page-photo article footer.article-footer {
+          padding: 0 18px 18px;
+        }
+
+        body.home-page.page-post #main > article footer.article-footer .article-catetags,
+        body.home-page.page-photo #main > article footer.article-footer .article-catetags,
+        body.home-page.page-post article footer.article-footer .article-catetags,
+        body.home-page.page-photo article footer.article-footer .article-catetags {
+          gap: 10px 8px;
+        }
+
+        body.home-page.page-post #main > article footer.article-footer .article-catetags a,
+        body.home-page.page-photo #main > article footer.article-footer .article-catetags a,
+        body.home-page.page-post article footer.article-footer .article-catetags a,
+        body.home-page.page-photo article footer.article-footer .article-catetags a {
+          min-height: 30px;
+          padding: 0 10px;
+          font-size: 0.82rem;
+        }
+
+        body.home-page.page-post #main > article footer.article-footer .article-share,
+        body.home-page.page-photo #main > article footer.article-footer .article-share,
+        body.home-page.page-post article footer.article-footer .article-share,
+        body.home-page.page-photo article footer.article-footer .article-share {
+          justify-content: flex-end;
         }
 
         body.home-page.page-post #main > article header.article-info > h1,
