@@ -59,9 +59,9 @@
 			</form>
 			{% endif %}
 			</li>
+			{% include _widget/language.html %}
 		</ul>
 	</nav>
-	{% include _widget/language.html %}
 	{% if page.layout == 'default' %}
 	<div class="home-profile">
 		<div class="profile-title">{% if page.lang == 'jp' %}開発者のためのメモブログ{% else %}개발자를 위한 메모 블로그{% endif %}</div>
