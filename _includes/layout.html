@@ -2,9 +2,9 @@
 {% if page.layout == 'default' %}
   {% assign body_class = 'home-page' %}
 {% elsif page.layout == 'post' %}
-  {% assign body_class = 'page-post' %}
+  {% assign body_class = 'home-page page-post' %}
 {% elsif page.layout == 'photo' %}
-  {% assign body_class = 'page-photo' %}
+  {% assign body_class = 'home-page page-photo' %}
 {% elsif page.layout == 'page' %}
   {% assign body_class = 'page-page' %}
 {% elsif page.layout == 'search' %}
