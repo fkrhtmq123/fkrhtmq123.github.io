@@ -48,6 +48,8 @@ jobs:
         run: bundle exec jekyll build --trace
         env:
           JEKYLL_ENV: production
+          GITHUB_PAGES: true
+          PAGES_REPO_NWO: fkrhtmq123/fkrhtmq123.github.io
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -38,6 +38,7 @@ assets: /assets
 # baseurl: https://fkrhtmq123.github.io
 url:
 baseurl: 
+repository: fkrhtmq123/fkrhtmq123.github.io
 
 plugins:
   - jekyll-polyglot
