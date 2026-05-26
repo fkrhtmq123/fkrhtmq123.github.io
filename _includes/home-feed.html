@@ -8,7 +8,7 @@
   {% assign secondary_label = 'Browse tags' %}
   {% assign feed_label = lang.recent_posts %}
   {% assign jp_posts = site.posts | where_exp: "post", "post.lang == 'jp'" %}
-  {% assign posts_per_page = 5 %}
+  {% assign posts_per_page = site.paginate | default: 20 %}
   {% assign total_posts = jp_posts | size | times: 1.0 %}
   {% assign total_pages = total_posts | divided_by: posts_per_page | ceil %}
   {% assign current_page = page.page | default: 1 | to_i %}
