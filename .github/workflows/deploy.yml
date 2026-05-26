@@ -37,14 +37,15 @@ jobs:
           bundler-cache: false
 
       - name: Install dependencies
-        run: bundle install --path vendor/bundle
+        run: |
+          bundle config set path "$RUNNER_TEMP/bundle"
+          bundle install
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Build site
-        run: |
-          bundle exec jekyll build --exclude vendor,bundle,node_modules
+        run: bundle exec jekyll build --trace
         env:
           JEKYLL_ENV: production
 
