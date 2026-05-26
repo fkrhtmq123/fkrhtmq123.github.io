@@ -487,282 +487,6 @@
         align-self: end;
       }
 
-      body.page-post,
-      body.page-photo {
-        display: grid;
-        grid-template-columns: 320px minmax(0, 1fr);
-        grid-template-rows: auto minmax(0, 1fr) auto;
-        align-content: start;
-        min-height: 100vh;
-        background: radial-gradient(circle at top left, #16213b 0%, #0b1020 42%, #060814 100%);
-        color: #eef2ff;
-        font-family: 'Noto Sans KR', 'Droid Sans Fallback', 'Malgun Gothic', 'Apple SD Gothic Neo', Inter, system-ui, sans-serif;
-      }
-
-      body.page-post a,
-      body.page-photo a {
-        color: inherit;
-      }
-
-      body.page-post header,
-      body.page-photo header {
-        grid-column: 1;
-        grid-row: 1 / span 3;
-        position: sticky;
-        top: 0;
-        min-height: 100vh;
-        width: 320px;
-        padding: 28px 22px;
-        background: rgba(16, 24, 47, 0.86);
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(18px);
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-      }
-
-      body.page-post header > div,
-      body.page-photo header > div {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 18px;
-        width: 100%;
-        min-width: 0;
-      }
-
-      body.page-post header > div,
-      body.page-post header > div > *,
-      body.page-photo header > div,
-      body.page-photo header > div > * {
-        box-sizing: border-box;
-      }
-
-      body.page-post header > div > *,
-      body.page-photo header > div > * {
-        float: none !important;
-        width: 100% !important;
-        min-width: 0;
-      }
-
-      body.page-post header #textlogo,
-      body.page-post header #imglogo,
-      body.page-photo header #textlogo,
-      body.page-photo header #imglogo {
-        margin-bottom: 0;
-      }
-
-      body.page-post header #textlogo h1,
-      body.page-post header #textlogo h2,
-      body.page-photo header #textlogo h1,
-      body.page-photo header #textlogo h2 {
-        width: 100%;
-      }
-
-      body.page-post header #textlogo h1,
-      body.page-photo header #textlogo h1 {
-        line-height: 1.02;
-      }
-
-      body.page-post header #textlogo h2,
-      body.page-photo header #textlogo h2 {
-        margin-top: 12px;
-      }
-
-      body.page-post header #imglogo img,
-      body.page-photo header #imglogo img {
-        display: block;
-        max-width: 100%;
-        height: auto;
-      }
-
-      body.page-post header .site-name a,
-      body.page-photo header .site-name a {
-        color: #fff;
-        font-size: 2rem;
-        font-weight: 900;
-        letter-spacing: -0.05em;
-      }
-
-      body.page-post header .blog-motto,
-      body.page-photo header .blog-motto {
-        color: #9ca3af;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-top: 10px;
-      }
-
-      body.page-post header .navbar,
-      body.page-photo header .navbar {
-        display: none;
-      }
-
-      body.page-post header nav,
-      body.page-photo header nav {
-        display: block !important;
-        margin-top: 22px;
-      }
-
-      body.page-post header nav > ul,
-      body.page-photo header nav > ul {
-        display: grid;
-        gap: 10px;
-      }
-
-      body.page-post header nav > ul > ul,
-      body.page-photo header nav > ul > ul {
-        display: contents;
-      }
-
-      body.page-post header nav li a,
-      body.page-photo header nav li a {
-        display: block;
-        padding: 13px 16px;
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.03);
-        color: #dbe4ff;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-      }
-
-      body.page-post header nav li a:hover,
-      body.page-photo header nav li a:hover {
-        transform: translateX(2px);
-        background: rgba(139, 92, 246, 0.16);
-        border-color: rgba(139, 92, 246, 0.34);
-      }
-
-      body.page-post #container,
-      body.page-photo #container {
-        grid-column: 2;
-        grid-row: 1;
-        width: auto;
-        margin: 0;
-        padding: 36px 60px 28px;
-      }
-
-      body.page-post footer,
-      body.page-photo footer {
-        grid-column: 2;
-        grid-row: 3;
-        padding: 0 40px 30px;
-        color: #94a3b8;
-        align-self: end;
-      }
-
-      @media (max-width: 1200px) {
-        body.page-post,
-        body.page-photo {
-          grid-template-columns: 1fr;
-          grid-template-rows: auto minmax(0, 1fr) auto;
-        }
-
-        body.page-post header,
-        body.page-photo header {
-          grid-column: 1;
-          grid-row: 1;
-          position: static;
-          width: auto;
-          min-height: auto;
-          border-right: 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        body.page-post #container,
-        body.page-photo #container {
-          grid-column: 1;
-          grid-row: 2;
-          padding: 24px 18px;
-        }
-
-        body.page-post footer,
-        body.page-photo footer {
-          grid-column: 1;
-          grid-row: 3;
-          padding: 0 18px 22px;
-          align-self: end;
-        }
-      }
-
-      @media (max-width: 768px) {
-        body.page-post header,
-        body.page-photo header {
-          padding: 18px 16px 20px;
-        }
-
-        body.page-post header > div,
-        body.page-photo header > div {
-          gap: 14px;
-        }
-
-        body.page-post header nav,
-        body.page-photo header nav {
-          margin-top: 10px;
-        }
-
-        body.page-post header nav > ul,
-        body.page-photo header nav > ul {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 8px;
-        }
-
-        body.page-post header nav > ul > li:last-child,
-        body.page-photo header nav > ul > li:last-child {
-          grid-column: 1 / -1;
-        }
-
-        body.page-post header nav li a,
-        body.page-photo header nav li a {
-          padding: 12px 14px;
-          border-radius: 16px;
-          font-size: 0.96rem;
-        }
-
-        body.page-post header nav .search,
-        body.page-photo header nav .search {
-          display: grid;
-          gap: 8px;
-        }
-
-        body.page-post header nav .search input[type="search"],
-        body.page-post header nav .search input[type="text"],
-        body.page-photo header nav .search input[type="search"],
-        body.page-photo header nav .search input[type="text"] {
-          width: 100%;
-          box-sizing: border-box;
-        }
-
-        body.page-post #container,
-        body.page-photo #container {
-          padding: 20px 14px 20px;
-        }
-
-        body.page-post footer,
-        body.page-photo footer {
-          padding: 0 18px 20px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        body.page-post header,
-        body.page-photo header {
-          padding: 16px 14px 18px;
-        }
-
-        body.page-post header nav > ul,
-        body.page-photo header nav > ul {
-          grid-template-columns: 1fr;
-        }
-
-        body.page-post header nav > ul > li:last-child,
-        body.page-photo header nav > ul > li:last-child {
-          grid-column: auto;
-        }
-
-        body.page-post #container,
-        body.page-photo #container {
-          padding: 18px 12px 18px;
-        }
-      }
-
       @media (max-width: 1200px) {
         body.home-page {
           grid-template-columns: 1fr;
@@ -935,28 +659,78 @@
 
       @media (max-width: 480px) {
         body.home-page header {
-          padding: 16px 14px 18px;
+          padding: 14px 12px 16px;
+        }
+
+        body.home-page header .site-name a {
+          font-size: 1.5rem;
+        }
+
+        body.home-page header .blog-motto {
+          font-size: 0.84rem;
+          margin-top: 6px;
+        }
+
+        body.home-page header nav {
+          margin-top: 8px;
         }
 
         body.home-page header nav > ul {
           grid-template-columns: 1fr;
+          gap: 6px;
         }
 
         body.home-page header nav > ul > li:last-child {
           grid-column: auto;
         }
 
+        body.home-page header nav li a {
+          padding: 10px 12px;
+          border-radius: 14px;
+          font-size: 0.92rem;
+        }
+
+        body.home-page header nav .search {
+          display: none;
+        }
+
+        body.home-page header .home-profile {
+          margin-top: 12px;
+          padding: 12px;
+          border-radius: 16px;
+        }
+
+        body.home-page header .home-profile .profile-copy {
+          font-size: 0.86rem;
+          line-height: 1.5;
+        }
+
         body.home-page header .home-profile .profile-stats {
           grid-template-columns: 1fr;
+          gap: 8px;
+          margin-top: 10px;
+        }
+
+        body.home-page header .home-profile .profile-stat {
+          padding: 10px 12px;
+          border-radius: 14px;
         }
 
         body.home-page #container {
-          padding: 18px 12px 18px;
+          padding: 16px 12px 16px;
+        }
+
+        body.home-page #main {
+          gap: 12px;
+        }
+
+        body.home-page #main .home-hero {
+          gap: 12px;
         }
 
         body.home-page #main .home-hero .hero-copy,
         body.home-page #main .home-hero .hero-metrics {
-          padding: 18px 16px;
+          padding: 16px 14px;
         }
 
         body.home-page #main .home-hero .hero-metrics {
@@ -964,25 +738,49 @@
         }
 
         body.home-page #main .home-hero .hero-badge {
-          padding: 8px 12px;
-          font-size: 0.82rem;
+          padding: 7px 11px;
+          font-size: 0.8rem;
         }
 
         body.home-page #main .home-hero h1 {
-          font-size: clamp(1.8rem, 11vw, 2.45rem);
-          line-height: 1;
+          font-size: clamp(1.65rem, 10vw, 2.2rem);
+          line-height: 1.02;
         }
 
         body.home-page #main .home-hero .hero-copy p {
-          font-size: 0.94rem;
+          font-size: 0.92rem;
+        }
+
+        body.home-page #main .home-hero .hero-actions {
+          gap: 8px;
+        }
+
+        body.home-page #main .home-hero .hero-actions a,
+        body.home-page #main .home-hero .hero-actions span {
+          min-height: 42px;
+        }
+
+        body.home-page #main .home-hero .metric-card {
+          padding: 12px 14px;
+          border-radius: 16px;
         }
 
         body.home-page #main .home-hero .metric-card b {
-          font-size: 1.25rem;
+          font-size: 1.15rem;
         }
 
         body.home-page #main section.post a {
-          padding: 16px;
+          padding: 15px;
+          border-radius: 18px;
+          min-height: auto;
+        }
+
+        body.home-page #main section.post a h1 {
+          font-size: 1rem;
+        }
+
+        body.home-page #main section.post a p {
+          font-size: 0.88rem;
         }
       }
     </style>
