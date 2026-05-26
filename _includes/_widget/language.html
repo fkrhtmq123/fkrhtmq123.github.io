@@ -7,18 +7,16 @@
 {% endunless %}
 
 <li class="nav-lang-item">
-  <a
-    class="nav-lang-link{% if active_lang == 'ko' %} is-active{% endif %}"
-    style="display:block; width:100%; box-sizing:border-box; text-align:center; padding:10px 15px; border:1px solid #007bff; border-radius:5px; text-decoration:none; transition:background-color 0.3s, color 0.3s; background-color:{% if active_lang == 'ko' %}#007bff{% else %}#f8f9fa{% endif %}; color:{% if active_lang == 'ko' %}#ffffff{% else %}#007bff{% endif %};"
-    href="{{ site.baseurl }}{{ ko_path }}"
-    {% if active_lang == 'ko' %}aria-current="page"{% endif %}
-    title="한국어 게시물 보기">KR</a>
-</li>
-<li class="nav-lang-item">
-  <a
-    class="nav-lang-link{% if active_lang == 'jp' %} is-active{% endif %}"
-    style="display:block; width:100%; box-sizing:border-box; text-align:center; padding:10px 15px; border:1px solid #007bff; border-radius:5px; text-decoration:none; transition:background-color 0.3s, color 0.3s; background-color:{% if active_lang == 'jp' %}#007bff{% else %}#f8f9fa{% endif %}; color:{% if active_lang == 'jp' %}#ffffff{% else %}#007bff{% endif %};"
-    href="{{ site.baseurl }}{{ jp_path }}"
-    {% if active_lang == 'jp' %}aria-current="page"{% endif %}
-    title="日本語の投稿を見る">JP</a>
+  <div class="nav-lang" aria-label="Language switcher">
+    <a
+      class="nav-lang-link{% if active_lang == 'ko' %} is-active{% endif %}"
+      href="{{ site.baseurl }}{{ ko_path }}"
+      {% if active_lang == 'ko' %}aria-current="page"{% endif %}
+      title="한국어 게시물 보기">KR</a>
+    <a
+      class="nav-lang-link{% if active_lang == 'jp' %} is-active{% endif %}"
+      href="{{ site.baseurl }}{{ jp_path }}"
+      {% if active_lang == 'jp' %}aria-current="page"{% endif %}
+      title="日本語の投稿を見る">JP</a>
+  </div>
 </li>
