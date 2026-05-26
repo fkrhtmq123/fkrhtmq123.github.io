@@ -2,9 +2,13 @@
 {% assign current_path = page.url | default: '/' %}
 {% assign ko_path = current_path | replace_first: '/jp/', '/' | replace_first: '/jp', '/' %}
 {% assign jp_path = current_path %}
-{% unless jp_path == '/' or jp_path == '/jp/' or jp_path == '/jp' or jp_path contains '/jp/' %}
-  {% assign jp_path = '/jp' | append: jp_path %}
-{% endunless %}
+{% if current_path == '/' %}
+  {% assign jp_path = '/jp/' %}
+{% elsif current_path == '/jp' or current_path == '/jp/' or current_path contains '/jp/' %}
+  {% assign jp_path = current_path %}
+{% else %}
+  {% assign jp_path = '/jp' | append: current_path %}
+{% endif %}
 
 <li class="nav-lang-item">
   <div class="nav-lang" aria-label="Language switcher">
