@@ -34,10 +34,8 @@ paginate_path: "/page:num"
 # title : 김동욱의 기술 블로그
 # tagline: 개발자로서 성장하기 위한 나만의 기술 블로그
 assets: /assets
-# url: https://fkrhtmq123.github.io
-# baseurl: https://fkrhtmq123.github.io
-url:
-baseurl: 
+url: "https://fkrhtmq123.github.io"
+baseurl: ""
 repository: fkrhtmq123/fkrhtmq123.github.io
 
 plugins:
