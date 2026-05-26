@@ -824,8 +824,19 @@
           gap: 14px;
         }
 
+        body.home-page header .navbar {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 0;
+        }
+
         body.home-page header nav {
+          display: none;
           margin-top: 10px;
+        }
+
+        body.home-page header nav.shownav {
+          display: block;
         }
 
         body.home-page header nav > ul {
@@ -855,9 +866,7 @@
         }
 
         body.home-page header .home-profile {
-          margin-top: 16px;
-          padding: 14px;
-          border-radius: 18px;
+          display: none;
         }
 
         body.home-page header .home-profile .profile-copy {
