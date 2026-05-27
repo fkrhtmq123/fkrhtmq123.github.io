@@ -305,23 +305,37 @@ $(document).ready(function(){
 <script data-goatcounter="{{ site.goatcounter_url }}" async src="https://gc.zgo.at/count.js"></script>
 <script>
   window.addEventListener('load', function () {
-    if (!window.goatcounter || typeof window.goatcounter.visit_count !== 'function') return;
-    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-    var hasMobileHomeBadge = !!document.querySelector('#gc-mobile-visits');
-    var hasHomeBadge = !!document.querySelector('#gc-home-visits');
-    var appendTarget = (isMobileViewport && hasMobileHomeBadge)
-      ? '#gc-mobile-visits'
-      : (hasHomeBadge ? '#gc-home-visits' : '#gc-total-visits');
+    var retries = 0;
+    var maxRetries = 30;
 
-    window.goatcounter.visit_count({
-      append: appendTarget,
-      path: window.location.pathname,
-      type: 'svg',
-      no_branding: true,
-      attr: isHomeBadge
-        ? { style: 'vertical-align:middle;' }
-        : { style: 'height:20px;vertical-align:middle;' }
-    });
+    function renderGoatCounterBadge() {
+      if (!window.goatcounter || typeof window.goatcounter.visit_count !== 'function') {
+        if (retries < maxRetries) {
+          retries += 1;
+          window.setTimeout(renderGoatCounterBadge, 200);
+        }
+        return;
+      }
+
+      var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      var hasMobileHomeBadge = !!document.querySelector('#gc-mobile-visits');
+      var hasHomeBadge = !!document.querySelector('#gc-home-visits');
+      var appendTarget = (isMobileViewport && hasMobileHomeBadge)
+        ? '#gc-mobile-visits'
+        : (hasHomeBadge ? '#gc-home-visits' : '#gc-total-visits');
+
+      window.goatcounter.visit_count({
+        append: appendTarget,
+        path: window.location.pathname,
+        type: 'svg',
+        no_branding: true,
+        attr: hasHomeBadge
+          ? { style: 'vertical-align:middle;' }
+          : { style: 'height:20px;vertical-align:middle;' }
+      });
+    }
+
+    renderGoatCounterBadge();
   });
 </script>
 {% endif %}
