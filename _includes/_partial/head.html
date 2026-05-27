@@ -724,22 +724,8 @@
       }
 
       body.home-page header .home-profile .profile-visitor-badge {
-        margin-top: 14px;
-        padding: 14px;
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 12px;
         display: none;
-      }
-
-      body.home-page header .home-profile .profile-visitor-badge .visitor-counter-frame {
-        background: #f3f4f6;
-        border: 3px solid #a21caf;
-        border-radius: 0;
-        min-height: 112px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
       body.home-page header .home-profile .profile-visitor-badge #gc-home-visits {
@@ -747,9 +733,12 @@
         width: 100%;
       }
 
-      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits iframe {
-        width: 100% !important;
-        min-height: 104px;
+      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits img,
+      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits iframe,
+      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits svg {
+        display: block;
+        max-width: 100%;
+        height: auto;
         border: 0;
       }
 

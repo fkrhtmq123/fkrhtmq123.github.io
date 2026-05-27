@@ -312,10 +312,10 @@ $(document).ready(function(){
     window.goatcounter.visit_count({
       append: appendTarget,
       path: window.location.pathname,
-      type: isHomeBadge ? 'html' : 'svg',
+      type: 'svg',
       no_branding: true,
       attr: isHomeBadge
-        ? { width: '100%', height: '104', style: 'border:0;display:block;' }
+        ? { style: 'height:30px;vertical-align:middle;' }
         : { style: 'height:20px;vertical-align:middle;' }
     });
   });
