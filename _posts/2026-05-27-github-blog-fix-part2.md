@@ -15,7 +15,7 @@ lang: ko
 
 <br /><br />
 
-![다국어 페이지네이션과 언어 전환 수정 요약](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part2-pagination-lang-fix-v2.svg)
+![다국어 페이지네이션과 언어 전환 수정 요약](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part2-pagination-lang-fix-v1.png)
 
 <br /><br />
 
