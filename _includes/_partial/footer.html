@@ -31,7 +31,7 @@
 		{% endif %}
 		
 		</p>
-		{% if site.goatcounter_url %}
+		{% if site.goatcounter_url and page.layout != 'default' %}
 		<p class="visitor-counter">
 			방문자 수:
 			<span id="gc-total-visits">-</span>

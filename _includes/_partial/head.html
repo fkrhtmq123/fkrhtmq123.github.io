@@ -723,6 +723,35 @@
         margin-top: 2px;
       }
 
+      body.home-page header .home-profile .profile-visitor-badge {
+        margin-top: 12px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: none;
+        align-items: center;
+        gap: 10px;
+      }
+
+      body.home-page header .home-profile .profile-visitor-badge .label {
+        color: #cbd5e1;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits {
+        display: inline-flex;
+        align-items: center;
+        min-width: 140px;
+      }
+
+      @media (min-width: 769px) {
+        body.home-page header .home-profile .profile-visitor-badge {
+          display: inline-flex;
+        }
+      }
+
       body.home-page #container {
         grid-column: 2;
         grid-row: 1;

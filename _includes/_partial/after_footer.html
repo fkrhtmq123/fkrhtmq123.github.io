@@ -306,12 +306,14 @@ $(document).ready(function(){
 <script>
   window.addEventListener('load', function () {
     if (!window.goatcounter || typeof window.goatcounter.visit_count !== 'function') return;
+    var appendTarget = document.querySelector('#gc-home-visits') ? '#gc-home-visits' : '#gc-total-visits';
+    var badgeHeight = appendTarget === '#gc-home-visits' ? '28px' : '20px';
     window.goatcounter.visit_count({
-      append: '#gc-total-visits',
+      append: appendTarget,
       path: window.location.pathname,
       type: 'svg',
       no_branding: true,
-      attr: { style: 'height:20px;vertical-align:middle;' }
+      attr: { style: 'height:' + badgeHeight + ';vertical-align:middle;' }
     });
   });
 </script>

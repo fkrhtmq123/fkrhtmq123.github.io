@@ -76,6 +76,12 @@
 			<div class="profile-stat"><b>{{ site.posts | size }}</b><span>{% if page.lang == 'jp' %}posts{% else %}posts{% endif %}</span></div>
 			<div class="profile-stat"><b>{{ site.categories | size }}</b><span>{% if page.lang == 'jp' %}topics{% else %}topics{% endif %}</span></div>
 		</div>
+		{% if site.goatcounter_url %}
+		<div class="profile-visitor-badge">
+			<span class="label">{% if page.lang == 'jp' %}訪問者{% else %}방문자 수{% endif %}</span>
+			<span id="gc-home-visits">-</span>
+		</div>
+		{% endif %}
 	</div>
 	{% endif %}
 </div>
