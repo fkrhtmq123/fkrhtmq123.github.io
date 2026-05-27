@@ -306,14 +306,17 @@ $(document).ready(function(){
 <script>
   window.addEventListener('load', function () {
     if (!window.goatcounter || typeof window.goatcounter.visit_count !== 'function') return;
-    var appendTarget = document.querySelector('#gc-home-visits') ? '#gc-home-visits' : '#gc-total-visits';
-    var badgeHeight = appendTarget === '#gc-home-visits' ? '28px' : '20px';
+    var isHomeBadge = !!document.querySelector('#gc-home-visits');
+    var appendTarget = isHomeBadge ? '#gc-home-visits' : '#gc-total-visits';
+
     window.goatcounter.visit_count({
       append: appendTarget,
       path: window.location.pathname,
-      type: 'svg',
+      type: isHomeBadge ? 'html' : 'svg',
       no_branding: true,
-      attr: { style: 'height:' + badgeHeight + ';vertical-align:middle;' }
+      attr: isHomeBadge
+        ? { width: '100%', height: '104', style: 'border:0;display:block;' }
+        : { style: 'height:20px;vertical-align:middle;' }
     });
   });
 </script>

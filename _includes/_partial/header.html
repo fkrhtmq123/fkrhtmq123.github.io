@@ -78,8 +78,9 @@
 		</div>
 		{% if site.goatcounter_url %}
 		<div class="profile-visitor-badge">
-			<span class="label">{% if page.lang == 'jp' %}訪問者{% else %}방문자 수{% endif %}</span>
-			<span id="gc-home-visits">-</span>
+			<div class="visitor-counter-frame">
+				<span id="gc-home-visits">-</span>
+			</div>
 		</div>
 		{% endif %}
 	</div>
