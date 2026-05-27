@@ -302,18 +302,16 @@ $(document).ready(function(){
 <!-- Tiny_search End -->
 
 {% if site.goatcounter_url %}
-<script data-goatcounter="{{ site.goatcounter_url }}" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="{{ site.goatcounter_url }}" async src="https://gc.zgo.at/count.js"></script>
 <script>
-  window.goatcounter = window.goatcounter || {};
-  window.goatcounter.visit_count = window.goatcounter.visit_count || function() {};
   window.addEventListener('load', function () {
     if (!window.goatcounter || typeof window.goatcounter.visit_count !== 'function') return;
     window.goatcounter.visit_count({
       append: '#gc-total-visits',
-      path: 'total',
-      type: 'html',
+      path: window.location.pathname,
+      type: 'svg',
       no_branding: true,
-      attr: { width: '120', height: '24', style: 'border:0;vertical-align:middle;' }
+      attr: { style: 'height:20px;vertical-align:middle;' }
     });
   });
 </script>
