@@ -136,6 +136,8 @@ jiathis:
   tsina: ## e.g. 2176287895 Your weibo id,It will be used in share button.
 
 #### Analytics
+goatcounter_url: ""  # 예: https://YOUR-CODE.goatcounter.com/count
+
 google_analytics:
   enable: true
   id: G-GS1WXGS1PB       ## e.g. UA-46321946-2 your google analytics ID.
