@@ -1,22 +1,48 @@
-{% if page.previous or page.next %}
+{% assign same_lang_posts = site.posts | where: "lang", page.lang %}
+{% assign current_index = nil %}
+
+{% for p in same_lang_posts %}
+  {% if p.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign prev_post = nil %}
+{% assign next_post = nil %}
+
+{% if current_index != nil %}
+  {% assign prev_index = current_index | plus: 1 %}
+  {% assign next_index = current_index | minus: 1 %}
+
+  {% for p in same_lang_posts %}
+    {% if forloop.index0 == prev_index %}
+      {% assign prev_post = p %}
+    {% endif %}
+    {% if forloop.index0 == next_index %}
+      {% assign next_post = p %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if prev_post or next_post %}
 <nav class="article-nav clearfix">
- {% if page.previous %}
- <div class="prev" >
- <a href="{{ site.baseurl }}{{ page.previous.url }}" title="{{ page.previous.title }}">
-  <strong>{{ lang.prev-post }}</strong><br/>
-  <span>
-  {% if page.previous.title %}{{ page.previous.title }}{% else %}(no title){% endif %}</span>
-</a>
-</div>
-{% endif %}
-{% if page.next %}
-<div class="next">
-<a href="{{ site.baseurl }}{{ page.next.url }}"  title="{{ page.next.title }}">
- <strong>{{ lang.next-post }}</strong><br/> 
- <span>{% if page.next.title %}{{ page.next.title }}{% else %}(no title){% endif %}
-</span>
-</a>
-</div>
-{% endif %}
+  {% if prev_post %}
+  <div class="prev">
+    <a href="{{ site.baseurl }}{{ prev_post.url }}" title="{{ prev_post.title }}">
+      <strong>{{ lang.prev-post }}</strong><br/>
+      <span>{% if prev_post.title %}{{ prev_post.title }}{% else %}(no title){% endif %}</span>
+    </a>
+  </div>
+  {% endif %}
+
+  {% if next_post %}
+  <div class="next">
+    <a href="{{ site.baseurl }}{{ next_post.url }}" title="{{ next_post.title }}">
+      <strong>{{ lang.next-post }}</strong><br/>
+      <span>{% if next_post.title %}{{ next_post.title }}{% else %}(no title){% endif %}</span>
+    </a>
+  </div>
+  {% endif %}
 </nav>
 {% endif %}
