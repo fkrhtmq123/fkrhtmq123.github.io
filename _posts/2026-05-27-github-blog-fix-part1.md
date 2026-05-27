@@ -15,7 +15,7 @@ lang: ko
 
 <br /><br />
 
-![GitHub Pages 배포와 baseurl 수정 요약](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part1-deploy-path-fix-v1.png)
+![GitHub Pages 배포와 baseurl 수정 요약](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part1-deploy-path-fix-v2.svg)
 
 <br /><br />
 

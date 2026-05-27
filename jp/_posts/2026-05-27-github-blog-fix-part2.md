@@ -15,7 +15,7 @@ lang: jp
 
 <br /><br />
 
-![多言語ページネーションと言語切替修正の要約](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part2-pagination-lang-fix-v1.png)
+![多言語ページネーションと言語切替修正の要約](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part2-pagination-lang-fix-v2.svg)
 
 <br /><br />
 

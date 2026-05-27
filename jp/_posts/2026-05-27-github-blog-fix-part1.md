@@ -15,7 +15,7 @@ GitHubブログを運用していると、記事の内容より先に**デプロ
 
 <br /><br />
 
-![GitHub Pagesデプロイとbaseurl修正の要約](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part1-deploy-path-fix-v1.png)
+![GitHub Pagesデプロイとbaseurl修正の要約](/assets/img/posts/2026-05-27-github-blog-fix/2026-05-27-part1-deploy-path-fix-v2.svg)
 
 <br /><br />
 
