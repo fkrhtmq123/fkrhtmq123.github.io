@@ -306,9 +306,12 @@ $(document).ready(function(){
 <script>
   window.addEventListener('load', function () {
     if (!window.goatcounter || typeof window.goatcounter.visit_count !== 'function') return;
-    var isMobileHomeBadge = !!document.querySelector('#gc-mobile-visits');
-    var isHomeBadge = !!document.querySelector('#gc-home-visits');
-    var appendTarget = isMobileHomeBadge ? '#gc-mobile-visits' : (isHomeBadge ? '#gc-home-visits' : '#gc-total-visits');
+    var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    var hasMobileHomeBadge = !!document.querySelector('#gc-mobile-visits');
+    var hasHomeBadge = !!document.querySelector('#gc-home-visits');
+    var appendTarget = (isMobileViewport && hasMobileHomeBadge)
+      ? '#gc-mobile-visits'
+      : (hasHomeBadge ? '#gc-home-visits' : '#gc-total-visits');
 
     window.goatcounter.visit_count({
       append: appendTarget,
