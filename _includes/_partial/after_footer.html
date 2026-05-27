@@ -306,8 +306,9 @@ $(document).ready(function(){
 <script>
   window.addEventListener('load', function () {
     if (!window.goatcounter || typeof window.goatcounter.visit_count !== 'function') return;
+    var isMobileHomeBadge = !!document.querySelector('#gc-mobile-visits');
     var isHomeBadge = !!document.querySelector('#gc-home-visits');
-    var appendTarget = isHomeBadge ? '#gc-home-visits' : '#gc-total-visits';
+    var appendTarget = isMobileHomeBadge ? '#gc-mobile-visits' : (isHomeBadge ? '#gc-home-visits' : '#gc-total-visits');
 
     window.goatcounter.visit_count({
       append: appendTarget,

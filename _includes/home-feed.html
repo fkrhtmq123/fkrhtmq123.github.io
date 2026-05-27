@@ -43,6 +43,12 @@
   </aside>
 </div>
 
+{% if site.goatcounter_url %}
+<div class="home-mobile-visitor-badge">
+  <span id="gc-mobile-visits"></span>
+</div>
+{% endif %}
+
 <div class="home-feed-label">{{ feed_label }}</div>
 
 {% if active_lang == 'jp' %}
