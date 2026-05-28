@@ -10,53 +10,55 @@
 {% endfor %}
 {% assign tag_names = tag_names_csv | split: '||' | uniq | sort %}
 
-<div class="archive-title tags-modern-title">
-  <h2 class="tag-icon"><span class='archive-folder'>{{ lang.tags }}</span></h2>
+<div id="main" class="tags-modern-page">
+  <div class="tags-modern-body">
+    <aside class="archive-title tags-modern-title">
+      <h2 class="tag-icon"><span class='archive-folder'>{{ lang.tags }}</span></h2>
 
-  <div class="archiveslist archive-float clearfix tags-modern-index-wrap" id="tags-filter-list">
-    <p class="tags-index-row">
-      <a class="archive-list-link is-active" href="#" data-tag="__all__">All</a>
-      <span class="archive-list-count">{{ scoped_posts | size }}</span>
-    </p>
-
-    {% for tag_name in tag_names %}
-      {% if tag_name != '' %}
-        {% assign tag_posts = scoped_posts | where_exp: 'post', "post.tags contains tag_name" %}
+      <div class="archiveslist archive-float clearfix tags-modern-index-wrap" id="tags-filter-list">
         <p class="tags-index-row">
-          <a class="archive-list-link" href="#tag-{{ tag_name | slugify }}" data-tag="{{ tag_name }}">{{ tag_name }}</a>
-          <span class="archive-list-count">{{ tag_posts | size }}</span>
+          <a class="archive-list-link is-active" href="#" data-tag="__all__">All</a>
+          <span class="archive-list-count">{{ scoped_posts | size }}</span>
         </p>
+
+        {% for tag_name in tag_names %}
+          {% if tag_name != '' %}
+            {% assign tag_posts = scoped_posts | where_exp: 'post', "post.tags contains tag_name" %}
+            <p class="tags-index-row">
+              <a class="archive-list-link" href="#tag-{{ tag_name | slugify }}" data-tag="{{ tag_name }}">{{ tag_name }}</a>
+              <span class="archive-list-count">{{ tag_posts | size }}</span>
+            </p>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="archives-modern-nav">
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/{% else %}{{ site.baseurl }}/{% endif %}">Home</a>
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/archives/{% else %}{{ site.baseurl }}/archives/{% endif %}">Archives</a>
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/about/{% else %}{{ site.baseurl }}/about/{% endif %}">About</a>
+      </div>
+
+      <div class="archives-modern-lang" aria-label="Language switcher">
+        <a class="nav-lang-link {% if active_lang != 'jp' %}active{% endif %}" href="{{ site.baseurl }}/tags/" title="한국어 글 보기">KR</a>
+        <a class="nav-lang-link {% if active_lang == 'jp' %}active{% endif %}" href="{{ site.baseurl }}/jp/tags/" title="日本語の投稿を見る">JP</a>
+      </div>
+
+      {% if site.goatcounter_url %}
+      <div class="tags-modern-visitor-badge">
+        <span id="gc-tags-visits"></span>
+      </div>
       {% endif %}
-    {% endfor %}
-  </div>
+    </aside>
 
-  <div class="archives-modern-nav">
-    <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/{% else %}{{ site.baseurl }}/{% endif %}">Home</a>
-    <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/archives/{% else %}{{ site.baseurl }}/archives/{% endif %}">Archives</a>
-    <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/about/{% else %}{{ site.baseurl }}/about/{% endif %}">About</a>
-  </div>
-
-  <div class="archives-modern-lang" aria-label="Language switcher">
-    <a class="nav-lang-link {% if active_lang != 'jp' %}active{% endif %}" href="{{ site.baseurl }}/tags/" title="한국어 글 보기">KR</a>
-    <a class="nav-lang-link {% if active_lang == 'jp' %}active{% endif %}" href="{{ site.baseurl }}/jp/tags/" title="日本語の投稿を見る">JP</a>
-  </div>
-
-  {% if site.goatcounter_url %}
-  <div class="tags-modern-visitor-badge">
-    <span id="gc-tags-visits"></span>
-  </div>
-  {% endif %}
-</div>
-
-<div id="main" class="archive-part clearfix tags-modern-main">
-  <div id="archive-page" class="tags-modern-content">
-    <section class="tags-modern-card">
-      <header class="tags-modern-card-header">
-        <h2 id="tags-current-title">All Posts</h2>
-        <span id="tags-current-count"></span>
-      </header>
-      <ul class="tags-modern-post-list" id="tags-post-list"></ul>
-      <nav class="tags-modern-pagination" id="tags-pagination"></nav>
+    <section id="archive-page" class="archive-part clearfix tags-modern-main tags-modern-content">
+      <section class="tags-modern-card">
+        <header class="tags-modern-card-header">
+          <h2 id="tags-current-title">All Posts</h2>
+          <span id="tags-current-count"></span>
+        </header>
+        <ul class="tags-modern-post-list" id="tags-post-list"></ul>
+        <nav class="tags-modern-pagination" id="tags-pagination"></nav>
+      </section>
     </section>
   </div>
 </div>
@@ -205,7 +207,31 @@
     margin: 0;
   }
 
+  body.page-tags .tags-modern-page {
+    width: 100%;
+  }
+
+  body.page-tags .tags-modern-body {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  body.page-tags .archive-title,
+  body.page-tags .archive-part {
+    float: none;
+    width: auto;
+    margin: 0 !important;
+  }
+
+  body.page-tags .archive-title {
+    padding: 16px 18px;
+  }
+
   body.page-tags .tags-modern-title {
+    position: sticky;
+    top: 18px;
     background: rgba(16, 24, 47, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
@@ -215,8 +241,6 @@
 
   body.page-tags .tags-modern-index-wrap {
     margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
   }
 
   body.page-tags .tags-index-row {
@@ -310,7 +334,7 @@
     justify-content: center;
   }
 
-  body.page-tags .tags-modern-main { margin-top: 2em; }
+  body.page-tags .tags-modern-main { margin-top: 0; }
   body.page-tags .tags-modern-content { display: grid; gap: 12px; }
 
   body.page-tags .tags-modern-card {
@@ -428,7 +452,17 @@
       padding: 14px 12px;
     }
 
-    body.page-tags .tags-modern-main { margin-top: 1em; }
+    body.page-tags .tags-modern-body {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    body.page-tags .tags-modern-title {
+      position: static;
+      top: auto;
+    }
+
+    body.page-tags .tags-modern-main { margin-top: 0; }
 
     body.page-tags .tags-modern-post-list li {
       flex-direction: column;
