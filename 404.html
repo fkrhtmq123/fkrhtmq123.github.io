@@ -1,16 +1,138 @@
 ---
-
+permalink: /404.html
+sitemap: false
 ---
-<html>
+<!doctype html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>{{ site.title }} | 404</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }} | 404</title>
+  <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/assets/img/favicon.ico">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top left, #16213b 0%, #0b1020 42%, #060814 100%);
+      color: #eef2ff;
+      font-family: 'Noto Sans KR', 'Hiragino Sans', 'Yu Gothic', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 24px;
+    }
+
+    .nf-card {
+      max-width: 480px;
+      width: 100%;
+      padding: 36px 28px;
+      border-radius: 24px;
+      background: rgba(16, 24, 47, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .nf-code {
+      font-size: clamp(3rem, 14vw, 5rem);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      margin: 0;
+      background: linear-gradient(135deg, #60a5fa, #c4b5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nf-title {
+      margin: 16px 0 8px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .nf-desc {
+      margin: 0 0 24px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .nf-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .nf-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+      color: #dbeafe;
+    }
+
+    .nf-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(96, 165, 250, 0.45);
+      background: rgba(96, 165, 250, 0.18);
+      color: #ffffff;
+    }
+
+    .nf-btn.primary {
+      color: #ffffff;
+      border-color: rgba(59, 130, 246, 0.55);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
+    }
+
+    .nf-btn.primary:hover {
+      border-color: rgba(59, 130, 246, 0.75);
+    }
+  </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3MFBQQ8"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
+  <main class="nf-card" role="main">
+    <p class="nf-code">404</p>
+    <h1 class="nf-title" id="nf-title">페이지를 찾을 수 없습니다</h1>
+    <p class="nf-desc" id="nf-desc">요청하신 페이지는 삭제되었거나 주소가 변경되었을 수 있어요.</p>
+    <div class="nf-actions">
+      <a class="nf-btn primary" id="nf-home" href="{{ site.baseurl }}/">홈으로 돌아가기</a>
+      <a class="nf-btn" id="nf-archives" href="{{ site.baseurl }}/archives/">Archives</a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var path = window.location.pathname || '';
+      var isJp = path.indexOf('/jp/') === 0 || path === '/jp';
+      if (!isJp) return;
+
+      document.documentElement.setAttribute('lang', 'ja');
+      document.getElementById('nf-title').textContent = 'ページが見つかりません';
+      document.getElementById('nf-desc').textContent = 'お探しのページは削除されたか、URL が変更された可能性があります。';
+      document.getElementById('nf-home').textContent = 'ホームに戻る';
+      document.getElementById('nf-home').setAttribute('href', '{{ site.baseurl }}/jp/');
+      document.getElementById('nf-archives').setAttribute('href', '{{ site.baseurl }}/jp/archives/');
+    })();
+  </script>
 </body>
 </html>
