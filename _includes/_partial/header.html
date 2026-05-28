@@ -60,6 +60,13 @@
 			{% endif %}
 			</li>
 			{% include _widget/language.html %}
+			{% if site.goatcounter_url %}
+			<li class="nav-visitor-item">
+				<div class="nav-visitor-badge">
+					<span id="gc-lang-visits"></span>
+				</div>
+			</li>
+			{% endif %}
 		</ul>
 	</nav>
 	{% if page.layout == 'default' %}
@@ -76,11 +83,6 @@
 			<div class="profile-stat"><b>{{ site.posts | size }}</b><span>{% if page.lang == 'jp' %}posts{% else %}posts{% endif %}</span></div>
 			<div class="profile-stat"><b>{{ site.categories | size }}</b><span>{% if page.lang == 'jp' %}topics{% else %}topics{% endif %}</span></div>
 		</div>
-		{% if site.goatcounter_url %}
-		<div class="profile-visitor-badge">
-			<span id="gc-home-visits"></span>
-		</div>
-		{% endif %}
 	</div>
 	{% endif %}
 </div>

@@ -318,20 +318,23 @@ $(document).ready(function(){
       }
 
       var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      var hasArchivesBadge = !!document.querySelector('#gc-archives-visits');
+      var hasNavLangBadge = !!document.querySelector('#gc-lang-visits');
       var hasMobileHomeBadge = !!document.querySelector('#gc-mobile-visits');
-      var hasHomeBadge = !!document.querySelector('#gc-home-visits');
-      var appendTarget = (isMobileViewport && hasMobileHomeBadge)
-        ? '#gc-mobile-visits'
-        : (hasHomeBadge ? '#gc-home-visits' : '#gc-total-visits');
+      var appendTarget = hasArchivesBadge
+        ? '#gc-archives-visits'
+        : (hasNavLangBadge
+            ? '#gc-lang-visits'
+            : ((isMobileViewport && hasMobileHomeBadge) ? '#gc-mobile-visits' : null));
+
+      if (!appendTarget) return;
 
       window.goatcounter.visit_count({
         append: appendTarget,
         path: window.location.pathname,
         type: 'svg',
         no_branding: true,
-        attr: hasHomeBadge
-          ? { style: 'vertical-align:middle;' }
-          : { style: 'height:20px;vertical-align:middle;' }
+        attr: { style: 'vertical-align:middle;' }
       });
     }
 

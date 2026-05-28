@@ -652,27 +652,57 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 12px 14px;
-          border: 1px solid #007bff;
-          border-radius: 18px;
+          min-height: 36px;
+          flex: 1 1 0;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          letter-spacing: 0.01em;
           text-decoration: none;
-          background-color: #f8f9fa;
-          color: #007bff;
-          font-weight: 700;
+          color: #dbeafe;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           transform: none;
         }
 
         body.home-page header nav > ul > li.nav-lang-item .nav-lang .nav-lang-link:hover {
           transform: none;
-          background-color: #eaf3ff;
-          border-color: #0a84ff;
+          color: #ffffff;
+          border-color: rgba(96, 165, 250, 0.45);
+          background: rgba(96, 165, 250, 0.18);
         }
 
         body.home-page header nav > ul > li.nav-lang-item .nav-lang .nav-lang-link.is-active {
-          background-color: #007bff;
           color: #ffffff;
-          border-color: #007bff;
+          border-color: rgba(59, 130, 246, 0.55);
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
+          box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
         }
+      }
+
+      body.home-page header nav > ul > li.nav-visitor-item {
+        grid-column: 1 / -1;
+      }
+
+      body.home-page header nav > ul > li.nav-visitor-item .nav-visitor-badge {
+        margin-top: 2px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      body.home-page header nav > ul > li.nav-visitor-item .nav-visitor-badge #gc-lang-visits {
+        display: flex;
+        justify-content: center;
+      }
+
+      body.home-page header nav > ul > li.nav-visitor-item .nav-visitor-badge #gc-lang-visits img,
+      body.home-page header nav > ul > li.nav-visitor-item .nav-visitor-badge #gc-lang-visits iframe,
+      body.home-page header nav > ul > li.nav-visitor-item .nav-visitor-badge #gc-lang-visits svg {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
       }
 
       body.home-page header .home-profile {
@@ -721,34 +751,6 @@
         color: #9ca3af;
         font-size: 0.82rem;
         margin-top: 2px;
-      }
-
-      body.home-page header .home-profile .profile-visitor-badge {
-        margin-top: 12px;
-        display: none;
-      }
-
-      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-      }
-
-      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits img,
-      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits iframe,
-      body.home-page header .home-profile .profile-visitor-badge #gc-home-visits svg {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        border: 0;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      @media (min-width: 769px) {
-        body.home-page header .home-profile .profile-visitor-badge {
-          display: block;
-        }
       }
 
       body.home-page #container {
@@ -1074,17 +1076,22 @@
           min-width: 64px;
           flex: 1 1 0;
           box-sizing: border-box;
-          padding: 12px 14px;
-          border: 1px solid #007bff;
-          border-radius: 16px;
+          min-height: 36px;
+          border-radius: 12px;
           text-decoration: none;
-          background-color: #f8f9fa;
-          color: #007bff;
+          color: #dbeafe;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          font-size: 0.9rem;
+          font-weight: 600;
+          letter-spacing: 0.01em;
         }
 
         body.home-page header nav > ul > li.nav-lang-item .nav-lang .nav-lang-link.is-active {
-          background-color: #007bff;
           color: #ffffff;
+          border-color: rgba(59, 130, 246, 0.55);
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
+          box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
         }
 
         body.home-page header nav li a {
@@ -1102,6 +1109,20 @@
         body.home-page header nav .search input[type="text"] {
           width: 100%;
           box-sizing: border-box;
+        }
+
+        body.home-page header nav > ul > li.nav-visitor-item {
+          grid-column: 1 / -1;
+        }
+
+        body.home-page header nav > ul > li.nav-visitor-item .nav-visitor-badge {
+          margin-top: 0;
+          padding: 10px 12px;
+          border-radius: 14px;
+        }
+
+        body.home-page header nav > ul > li.nav-visitor-item .nav-visitor-badge #gc-lang-visits {
+          justify-content: center;
         }
 
         body.home-page header .home-profile {

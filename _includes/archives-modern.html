@@ -43,6 +43,11 @@
         <a class="nav-lang-link {% if active_lang != 'jp' %}active{% endif %}" href="{{ site.baseurl }}/archives/" title="한국어 글 보기">KR</a>
         <a class="nav-lang-link {% if active_lang == 'jp' %}active{% endif %}" href="{{ site.baseurl }}/jp/archives/" title="日本語の投稿を見る">JP</a>
       </div>
+      {% if site.goatcounter_url %}
+      <div class="archives-modern-visitor-badge">
+        <span id="gc-archives-visits"></span>
+      </div>
+      {% endif %}
     </aside>
 
     <section class="archives-modern-list">
@@ -258,6 +263,27 @@
     border-color: rgba(59, 130, 246, 0.55);
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
     box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
+  }
+
+  body.page-archives .archives-modern-visitor-badge {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-archives .archives-modern-visitor-badge #gc-archives-visits {
+    display: flex;
+    justify-content: center;
+  }
+
+  body.page-archives .archives-modern-visitor-badge #gc-archives-visits img,
+  body.page-archives .archives-modern-visitor-badge #gc-archives-visits iframe,
+  body.page-archives .archives-modern-visitor-badge #gc-archives-visits svg {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   body.page-archives .archives-modern-list {
