@@ -1,0 +1,26 @@
+{% assign active_lang = page.lang | default: site.default_lang | default: site.language %}
+{% assign lang = site.data.languages[active_lang] %}
+{% assign default_lang = site.default_lang | default: 'ko' %}
+
+{% capture json %}
+[
+  {% assign all_posts = site.posts | where_exp:'doc','doc.sitemap != false' %}
+  {% assign first_emitted = false %}
+  {% for doc in all_posts %}
+    {% assign doc_lang = doc.lang | default: default_lang %}
+    {% if doc_lang == active_lang %}
+    {% if first_emitted %},{% endif %}
+    {
+      "title": {{ doc.title | jsonify }},
+      "date": {{ doc.date | date: lang.archive_date | jsonify }},
+      "excerpt": {{ doc.excerpt | markdownify | strip_html | jsonify }},
+      {% if site.simple_jekyll_search.fulltext %}"content": {{ doc.content | markdownify | strip_html | jsonify | replace:'\n',' ' | replace:'   ',' ' | replace:'  ',' ' }},{% endif %}
+      "url": {{ site.baseurl | append: doc.url | jsonify }}
+    }
+    {% assign first_emitted = true %}
+    {% endif %}
+  {% endfor %}
+]
+{% endcapture %}
+
+{{ json | lstrip }}

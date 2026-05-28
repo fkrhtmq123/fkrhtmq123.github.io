@@ -321,6 +321,7 @@ $(document).ready(function(){
       var hasArchivesBadge = !!document.querySelector('#gc-archives-visits');
       var hasTagsBadge = !!document.querySelector('#gc-tags-visits');
       var hasAboutBadge = !!document.querySelector('#gc-about-visits');
+      var hasSearchBadge = !!document.querySelector('#gc-search-visits');
       var hasNavLangBadge = !!document.querySelector('#gc-lang-visits');
       var hasMobileHomeBadge = !!document.querySelector('#gc-mobile-visits');
       var appendTarget = hasArchivesBadge
@@ -329,9 +330,11 @@ $(document).ready(function(){
             ? '#gc-tags-visits'
             : (hasAboutBadge
                 ? '#gc-about-visits'
-                : (hasNavLangBadge
-                    ? '#gc-lang-visits'
-                    : ((isMobileViewport && hasMobileHomeBadge) ? '#gc-mobile-visits' : null))));
+                : (hasSearchBadge
+                    ? '#gc-search-visits'
+                    : (hasNavLangBadge
+                        ? '#gc-lang-visits'
+                        : ((isMobileViewport && hasMobileHomeBadge) ? '#gc-mobile-visits' : null)))));
 
       if (!appendTarget) return;
 

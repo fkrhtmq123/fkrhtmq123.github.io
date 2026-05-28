@@ -19,39 +19,74 @@ google.setOnLoadCallback(function(){
 },true);
 </script>
 {% elsif site.simple_jekyll_search.enable %}
-<style>
-#main {
-  margin-left: 10% !important;
-}
-</style>
+{% assign active_lang = page.lang | default: site.default_lang | default: site.language %}
+{% assign lang_data = site.data.languages[active_lang] %}
 
-<div id="main" class="archive-part clearfix">
-  <div id="results-container">
+<div id="main" class="search-modern-page">
+  <div class="search-modern-body">
+    <aside class="archive-title search-modern-title">
+      <h2 class="archive-icon"><span class="archive-folder">Search</span></h2>
+
+      <div class="search-modern-intro">
+        {% if active_lang == 'jp' %}
+        <p>記事のタイトルからキーワードで検索できます。</p>
+        {% else %}
+        <p>글 제목에서 키워드로 검색할 수 있어요.</p>
+        {% endif %}
+      </div>
+
+      <div class="archives-modern-nav">
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/{% else %}{{ site.baseurl }}/{% endif %}">Home</a>
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/archives/{% else %}{{ site.baseurl }}/archives/{% endif %}">Archives</a>
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/about/{% else %}{{ site.baseurl }}/about/{% endif %}">About</a>
+      </div>
+
+      <div class="archives-modern-lang" aria-label="Language switcher">
+        <a class="nav-lang-link {% if active_lang != 'jp' %}active{% endif %}" href="{{ site.baseurl }}/search/" title="한국어 글 보기">KR</a>
+        <a class="nav-lang-link {% if active_lang == 'jp' %}active{% endif %}" href="{{ site.baseurl }}/jp/search/" title="日本語の投稿を見る">JP</a>
+      </div>
+
+      {% if site.goatcounter_url %}
+      <div class="search-modern-visitor-badge">
+        <span id="gc-search-visits"></span>
+      </div>
+      {% endif %}
+    </aside>
+
+    <section id="archive-page" class="archive-part search-modern-main search-modern-content">
+      <section class="search-modern-card">
+        <header class="search-modern-card-header">
+          <h2>{% if active_lang == 'jp' %}検索{% else %}검색{% endif %}</h2>
+        </header>
+        <div class="search-modern-form-wrap">
+          <input type="search" id="search-modern-input" autocomplete="off" placeholder="{{ lang_data.search | default: 'Search' }}" />
+        </div>
+        <div id="results-container" class="search-modern-results"></div>
+      </section>
+    </section>
   </div>
 </div>
 
 <script src="{{ site.baseurl }}/assets/js/jekyll-search.js" type="text/javascript"></script>
 <script>
 SimpleJekyllSearch({
-  searchInput: document.getElementById('search'),
+  searchInput: document.getElementById('search-modern-input'),
   resultsContainer: document.getElementById('results-container'),
-  json: '{{ site.baseurl }}/search/search.json',
+  json: '{{ site.baseurl }}{% if active_lang == "jp" %}/jp/search/search.json{% else %}/search/search.json{% endif %}',
   searchResultTemplate:
-   '<section class="post" itemscope itemprop="blogPost"> \
-     <a href="{url}" title="{title}" itemprop="url"> \
-       <time datetime="{date}" itemprop="datePublished">{date}</time> \
-         <h1 itemprop="name">{title}</h1> \
-     </a> \
-   </section>'
+   '<a class="search-result-item" href="{url}" title="{title}"><h3 class="search-result-title">{title}</h3><time class="search-result-date" datetime="{date}">{date}</time></a>'
 });
 
-<!--Load parameter from query if possible. Needs to trigger keyup, may not be ready immediately -->
 var loadQuery = function () {
-  var params = {}
-  location.search.substr(1).split("&").forEach(function(item) {params[item.split("=")[0]] = item.split("=")[1]});
-  if(params.hasOwnProperty(PROP="q")){
-    document.getElementById('search').value = decodeURIComponent(params["q"]);
-    document.getElementById('search').dispatchEvent(new Event('keyup'));
+  var params = {};
+  location.search.substr(1).split("&").forEach(function(item) {
+    var kv = item.split("=");
+    params[kv[0]] = kv[1];
+  });
+  if (params.hasOwnProperty("q")) {
+    var input = document.getElementById('search-modern-input');
+    input.value = decodeURIComponent(params["q"]);
+    input.dispatchEvent(new Event('keyup'));
   }
 };
 
@@ -59,4 +94,305 @@ var loadQuery = function () {
   setTimeout(loadQuery, timeout);
 });
 </script>
+
+<style>
+  body.page-search {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at top left, #16213b 0%, #0b1020 42%, #060814 100%);
+    color: #eef2ff;
+  }
+
+  body.page-search header {
+    background: rgba(16, 24, 47, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+    margin: 16px auto 0;
+    max-width: 1080px;
+    padding: 16px 18px;
+  }
+
+  body.page-search header nav { display: none; }
+
+  body.page-search header > div {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  body.page-search header #imglogo,
+  body.page-search header #textlogo {
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  body.page-search header #imglogo img {
+    display: block;
+    width: 88px;
+    height: 88px;
+    max-width: 88px;
+  }
+
+  body.page-search header #textlogo h1,
+  body.page-search header #textlogo h2 {
+    width: auto;
+    margin: 0;
+  }
+
+  body.page-search header #textlogo h1 { line-height: 1.12; }
+  body.page-search header #textlogo h2 { margin-top: 8px; }
+
+  body.page-search header .site-name a,
+  body.page-search header .blog-motto { color: #eef2ff; }
+
+  body.page-search #container {
+    flex: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 16px 20px 28px;
+    background: transparent;
+  }
+
+  body.page-search #main {
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+
+  body.page-search .search-modern-page { width: 100%; }
+
+  body.page-search .search-modern-body {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  body.page-search .archive-title,
+  body.page-search .archive-part {
+    float: none;
+    width: auto;
+    margin: 0 !important;
+  }
+
+  body.page-search .archive-title { padding: 16px 18px; }
+
+  body.page-search .search-modern-title {
+    position: sticky;
+    top: 18px;
+    background: rgba(16, 24, 47, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+  }
+
+  body.page-search .search-modern-intro {
+    margin: 10px 0 0;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  body.page-search .search-modern-intro p { margin: 0; }
+
+  body.page-search .archives-modern-nav {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  body.page-search .archives-modern-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-search .archives-modern-nav a:hover {
+    background: rgba(139, 92, 246, 0.16);
+    border-color: rgba(139, 92, 246, 0.35);
+    color: #ffffff;
+  }
+
+  body.page-search .archives-modern-lang {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  body.page-search .archives-modern-lang .nav-lang-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    flex: 1 1 0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: #dbeafe;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-search .archives-modern-lang .nav-lang-link:hover {
+    color: #ffffff;
+    border-color: rgba(96, 165, 250, 0.45);
+    background: rgba(96, 165, 250, 0.18);
+  }
+
+  body.page-search .archives-modern-lang .nav-lang-link.active {
+    color: #ffffff;
+    border-color: rgba(59, 130, 246, 0.55);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
+  }
+
+  body.page-search .search-modern-visitor-badge {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-search .search-modern-visitor-badge #gc-search-visits {
+    display: flex;
+    justify-content: center;
+  }
+
+  body.page-search .search-modern-main { margin-top: 0; }
+  body.page-search .search-modern-content { display: grid; gap: 12px; }
+
+  body.page-search .search-modern-card {
+    background: rgba(16, 24, 47, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    padding: 18px 20px;
+  }
+
+  body.page-search .search-modern-card-header {
+    margin-bottom: 10px;
+  }
+
+  body.page-search .search-modern-card-header h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #ffffff;
+  }
+
+  body.page-search .search-modern-form-wrap {
+    margin-bottom: 14px;
+  }
+
+  body.page-search #search-modern-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  body.page-search #search-modern-input::placeholder {
+    color: #94a3b8;
+  }
+
+  body.page-search #search-modern-input:focus {
+    border-color: rgba(96, 165, 250, 0.55);
+    background: rgba(96, 165, 250, 0.10);
+  }
+
+  body.page-search .search-modern-results {
+    display: grid;
+    gap: 8px;
+  }
+
+  body.page-search .search-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  }
+
+  body.page-search .search-result-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(139, 92, 246, 0.34);
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255, 255, 255, 0.03));
+  }
+
+  body.page-search .search-result-title {
+    margin: 0;
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+  }
+
+  body.page-search .search-result-item:hover .search-result-title {
+    color: #c4b5fd;
+  }
+
+  body.page-search .search-result-date {
+    color: #94a3b8;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    body.page-search #container { padding: 12px 12px 20px; }
+
+    body.page-search header {
+      margin: 10px 12px 0;
+      border-radius: 18px;
+      padding: 14px 12px;
+    }
+
+    body.page-search .search-modern-body {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    body.page-search .search-modern-title {
+      position: static;
+      top: auto;
+    }
+
+    body.page-search .search-modern-main { margin-top: 0; }
+
+    body.page-search .search-result-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
 {% endif %}
