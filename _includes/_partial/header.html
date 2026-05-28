@@ -1,5 +1,6 @@
 <div>
-	{% assign lang = site.data.languages[page.lang] %}
+	{% assign active_lang = page.lang | default: site.default_lang | default: site.language %}
+	{% assign lang = site.data.languages[active_lang] %}
 	
 	{% if page.lang == 'jp' %}
 

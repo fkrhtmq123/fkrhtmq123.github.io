@@ -15,7 +15,7 @@
     <aside class="archive-title tags-modern-title">
       <h2 class="tag-icon"><span class='archive-folder'>{{ lang.tags }}</span></h2>
 
-      <div class="archiveslist archive-float clearfix tags-modern-index-wrap" id="tags-filter-list">
+      <div class="archiveslist archive-float clearfix tags-modern-index-wrap" id="tags-filter-list" style="display: flex; flex-wrap: wrap;">
         <p class="tags-index-row">
           <a class="archive-list-link is-active" href="#" data-tag="__all__">All</a>
           <span class="archive-list-count">{{ scoped_posts | size }}</span>
@@ -188,6 +188,41 @@
     display: none;
   }
 
+  body.page-tags header > div {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  body.page-tags header #imglogo,
+  body.page-tags header #textlogo {
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  body.page-tags header #imglogo img {
+    display: block;
+    width: 88px;
+    height: 88px;
+    max-width: 88px;
+  }
+
+  body.page-tags header #textlogo h1,
+  body.page-tags header #textlogo h2 {
+    width: auto;
+    margin: 0;
+  }
+
+  body.page-tags header #textlogo h1 {
+    line-height: 1.12;
+  }
+
+  body.page-tags header #textlogo h2 {
+    margin-top: 8px;
+  }
+
   body.page-tags header .site-name a,
   body.page-tags header .blog-motto {
     color: #eef2ff;
@@ -241,20 +276,37 @@
 
   body.page-tags .tags-modern-index-wrap {
     margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    column-gap: 0;
   }
 
   body.page-tags .tags-index-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 8px;
+    width: 100%;
+    margin: 0;
+    line-height: 1.75;
   }
 
-  body.page-tags .tags-index-row:last-child { margin-bottom: 0; }
+  body.page-tags .tags-index-row .archive-list-link {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  body.page-tags .tags-index-row .archive-list-link:hover {
+    color: #7dd3fc;
+  }
+
+  body.page-tags .tags-index-row .archive-list-count {
+    color: #e2e8f0;
+    font-size: 0.95em;
+    margin-left: 2px;
+    margin-right: 8px;
+  }
 
   body.page-tags .archive-list-link.is-active {
     color: #ffffff;
-    border-bottom: 1px solid rgba(96, 165, 250, 0.6);
   }
 
   body.page-tags .archives-modern-nav {
