@@ -25,7 +25,7 @@
       <ul>
         {% for month in monthly_groups %}
           {% assign month_key = month.name %}
-          {% assign month_label = month.items.first.date | date: "%b %Y" %}
+          {% assign month_label = month.items.first.date | date: "%Y.%m" %}
           <li>
             <a href="#{{ month_key }}">{{ month_label }}</a>
             <span>({{ month.items | size }})</span>
@@ -121,6 +121,12 @@
     max-width: 1080px;
     margin: 0 auto;
     padding: 16px 20px 28px;
+  }
+
+  body.page-archives #main {
+    width: 100%;
+    float: none;
+    margin: 0;
   }
 
   body.page-archives .archives-modern-page {
@@ -315,6 +321,7 @@
   }
 
   body.page-archives .archive-month-card li {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -322,19 +329,37 @@
     border-radius: 12px;
     padding: 10px 12px;
     background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  }
+
+  body.page-archives .archive-month-card li:hover {
+    transform: translateY(-3px);
+    border-color: rgba(139, 92, 246, 0.34);
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255, 255, 255, 0.03));
   }
 
   body.page-archives .archive-month-card li a {
+    position: static;
     color: #e2e8f0;
     text-decoration: none;
     overflow-wrap: anywhere;
   }
 
-  body.page-archives .archive-month-card li a:hover {
+  body.page-archives .archive-month-card li a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+  }
+
+  body.page-archives .archive-month-card li:hover a {
     color: #c4b5fd;
   }
 
   body.page-archives .archive-month-card li time {
+    position: relative;
+    z-index: 1;
     color: #94a3b8;
     font-size: 0.82rem;
     white-space: nowrap;
