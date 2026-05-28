@@ -4,10 +4,14 @@
 <div class="archive-title tags-modern-title">
   <h2 class="{{ icon }}-icon"><span class='archive-folder'>{{ title }}</span></h2>
   <div class="archiveslist archive-float clearfix tags-modern-index-wrap">
-    <ul class="archive-list tags-modern-index">
+    <ul class="archive-list tags-modern-index" id="tags-filter-list">
+      <li class="archive-list-item">
+        <a class="archive-list-link is-active" href="#" data-tag="__all__">All</a>
+        <span class="archive-list-count">{{ site.posts | size }}</span>
+      </li>
       {% for tag in site.tags %}
       <li class="archive-list-item">
-        <a class="archive-list-link" href="#tag-{{ tag[0] | slugify }}">{{ tag[0] }}</a>
+        <a class="archive-list-link" href="#tag-{{ tag[0] | slugify }}" data-tag="{{ tag[0] }}">{{ tag[0] }}</a>
         <span class="archive-list-count">{{ tag[1] | size }}</span>
       </li>
       {% endfor %}
@@ -17,24 +21,120 @@
 
 <div id="main" class="archive-part clearfix tags-modern-main">
   <div id="archive-page" class="tags-modern-content">
-    {% for tag in site.tags %}
-    <section id="tag-{{ tag[0] | slugify }}" class="tags-modern-card">
+    <section class="tags-modern-card">
       <header class="tags-modern-card-header">
-        <h2>{{ tag[0] }}</h2>
-        <span>{{ tag[1] | size }}</span>
+        <h2 id="tags-current-title">All Posts</h2>
+        <span id="tags-current-count"></span>
       </header>
-      <ul class="tags-modern-post-list">
-        {% for post in tag[1] %}
-        <li>
-          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-        </li>
-        {% endfor %}
-      </ul>
+      <ul class="tags-modern-post-list" id="tags-post-list"></ul>
+      <nav class="tags-modern-pagination" id="tags-pagination"></nav>
     </section>
-    {% endfor %}
   </div>
 </div>
+
+<script>
+(function () {
+  var PAGE_SIZE = 10;
+  var ALL_KEY = '__all__';
+
+  var posts = [
+    {% for post in site.posts %}
+    {
+      title: {{ post.title | jsonify }},
+      url: {{ (site.baseurl | append: post.url) | jsonify }},
+      date_iso: {{ post.date | date_to_xmlschema | jsonify }},
+      date_text: {{ post.date | date: "%Y-%m-%d" | jsonify }},
+      tags: [{% for t in post.tags %}{{ t | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}]
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  var state = {
+    currentTag: ALL_KEY,
+    currentPage: 1
+  };
+
+  var listEl = document.getElementById('tags-post-list');
+  var pagerEl = document.getElementById('tags-pagination');
+  var titleEl = document.getElementById('tags-current-title');
+  var countEl = document.getElementById('tags-current-count');
+  var filterList = document.getElementById('tags-filter-list');
+
+  function filteredPosts() {
+    if (state.currentTag === ALL_KEY) return posts;
+    return posts.filter(function (p) {
+      return (p.tags || []).indexOf(state.currentTag) !== -1;
+    });
+  }
+
+  function renderFilters() {
+    var links = filterList.querySelectorAll('a[data-tag]');
+    links.forEach(function (a) {
+      var active = a.getAttribute('data-tag') === state.currentTag;
+      a.classList.toggle('is-active', active);
+    });
+  }
+
+  function renderList() {
+    var all = filteredPosts();
+    var total = all.length;
+    var totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+    if (state.currentPage > totalPages) state.currentPage = totalPages;
+
+    var start = (state.currentPage - 1) * PAGE_SIZE;
+    var pageItems = all.slice(start, start + PAGE_SIZE);
+
+    titleEl.textContent = state.currentTag === ALL_KEY ? 'All Posts' : state.currentTag;
+    countEl.textContent = total + ' posts';
+
+    listEl.innerHTML = pageItems.map(function (post) {
+      return '<li>' +
+        '<a href="' + post.url + '">' + post.title + '</a>' +
+        '<time datetime="' + post.date_iso + '">' + post.date_text + '</time>' +
+      '</li>';
+    }).join('');
+
+    if (pageItems.length === 0) {
+      listEl.innerHTML = '<li class="tags-empty">게시물이 없습니다.</li>';
+    }
+
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    if (totalPages <= 1) {
+      pagerEl.innerHTML = '';
+      return;
+    }
+
+    var html = '';
+    for (var i = 1; i <= totalPages; i++) {
+      html += '<button type="button" class="tags-page-btn' + (i === state.currentPage ? ' is-active' : '') + '" data-page="' + i + '">' + i + '</button>';
+    }
+    pagerEl.innerHTML = html;
+  }
+
+  filterList.addEventListener('click', function (e) {
+    var link = e.target.closest('a[data-tag]');
+    if (!link) return;
+    e.preventDefault();
+    state.currentTag = link.getAttribute('data-tag');
+    state.currentPage = 1;
+    renderFilters();
+    renderList();
+  });
+
+  pagerEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-page]');
+    if (!btn) return;
+    state.currentPage = Number(btn.getAttribute('data-page')) || 1;
+    renderList();
+  });
+
+  renderFilters();
+  renderList();
+})();
+</script>
 
 <style>
   body.page-tags .tags-modern-title {
@@ -52,6 +152,11 @@
   body.page-tags .tags-modern-index {
     display: grid;
     gap: 8px;
+  }
+
+  body.page-tags .tags-modern-index .archive-list-link.is-active {
+    color: #ffffff;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.6);
   }
 
   body.page-tags .tags-modern-main {
@@ -130,6 +235,43 @@
     color: #94a3b8;
     font-size: 0.82rem;
     white-space: nowrap;
+  }
+
+  body.page-tags .tags-modern-post-list .tags-empty {
+    justify-content: center;
+    color: #94a3b8;
+  }
+
+  body.page-tags .tags-modern-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 14px;
+  }
+
+  body.page-tags .tags-modern-pagination .tags-page-btn {
+    min-width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.05);
+    color: #dbeafe;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  body.page-tags .tags-modern-pagination .tags-page-btn:hover {
+    border-color: rgba(96, 165, 250, 0.45);
+    background: rgba(96, 165, 250, 0.18);
+    color: #ffffff;
+  }
+
+  body.page-tags .tags-modern-pagination .tags-page-btn.is-active {
+    color: #ffffff;
+    border-color: rgba(59, 130, 246, 0.55);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
   }
 
   @media (max-width: 768px) {
