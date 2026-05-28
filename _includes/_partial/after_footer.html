@@ -320,6 +320,7 @@ $(document).ready(function(){
       var isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
       var hasArchivesBadge = !!document.querySelector('#gc-archives-visits');
       var hasTagsBadge = !!document.querySelector('#gc-tags-visits');
+      var hasCategoriesBadge = !!document.querySelector('#gc-categories-visits');
       var hasAboutBadge = !!document.querySelector('#gc-about-visits');
       var hasSearchBadge = !!document.querySelector('#gc-search-visits');
       var hasNavLangBadge = !!document.querySelector('#gc-lang-visits');
@@ -328,13 +329,15 @@ $(document).ready(function(){
         ? '#gc-archives-visits'
         : (hasTagsBadge
             ? '#gc-tags-visits'
-            : (hasAboutBadge
-                ? '#gc-about-visits'
-                : (hasSearchBadge
-                    ? '#gc-search-visits'
-                    : (hasNavLangBadge
-                        ? '#gc-lang-visits'
-                        : ((isMobileViewport && hasMobileHomeBadge) ? '#gc-mobile-visits' : null)))));
+            : (hasCategoriesBadge
+                ? '#gc-categories-visits'
+                : (hasAboutBadge
+                    ? '#gc-about-visits'
+                    : (hasSearchBadge
+                        ? '#gc-search-visits'
+                        : (hasNavLangBadge
+                            ? '#gc-lang-visits'
+                            : ((isMobileViewport && hasMobileHomeBadge) ? '#gc-mobile-visits' : null))))));
 
       if (!appendTarget) return;
 
