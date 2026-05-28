@@ -17,7 +17,7 @@
 
       <div class="archiveslist archive-float clearfix tags-modern-index-wrap" id="tags-filter-list" style="display: flex; flex-wrap: wrap;">
         <p class="tags-index-row">
-          <a class="archive-list-link is-active" href="#" data-tag="__all__">All</a>
+          <a class="archive-list-link is-active" href="#" data-tag="__all__">{% if active_lang == 'jp' %}すべて{% else %}All{% endif %}</a>
           <span class="archive-list-count">{{ scoped_posts | size }}</span>
         </p>
 
@@ -67,6 +67,11 @@
 (function () {
   var PAGE_SIZE = 10;
   var ALL_KEY = '__all__';
+  {% if active_lang == 'jp' %}
+  var I18N = { allLabel: 'すべての投稿', postsSuffix: '件の投稿', empty: '投稿がありません。' };
+  {% else %}
+  var I18N = { allLabel: 'All Posts', postsSuffix: 'posts', empty: '게시물이 없습니다.' };
+  {% endif %}
 
   var posts = [
     {% for post in scoped_posts %}
@@ -112,8 +117,8 @@
     var start = (state.currentPage - 1) * PAGE_SIZE;
     var pageItems = all.slice(start, start + PAGE_SIZE);
 
-    titleEl.textContent = state.currentTag === ALL_KEY ? 'All Posts' : state.currentTag;
-    countEl.textContent = total + ' posts';
+    titleEl.textContent = state.currentTag === ALL_KEY ? I18N.allLabel : state.currentTag;
+    countEl.textContent = total + ' ' + I18N.postsSuffix;
 
     listEl.innerHTML = pageItems.map(function (post) {
       return '<li>' +
@@ -123,7 +128,7 @@
     }).join('');
 
     if (pageItems.length === 0) {
-      listEl.innerHTML = '<li class="tags-empty">게시물이 없습니다.</li>';
+      listEl.innerHTML = '<li class="tags-empty">' + I18N.empty + '</li>';
     }
 
     renderPagination(totalPages);
@@ -279,11 +284,10 @@
     display: flex;
     flex-wrap: wrap;
     row-gap: 8px;
-    column-gap: 0;
+    column-gap: 8px;
   }
 
   body.page-tags .tags-index-row {
-    width: 100%;
     margin: 0;
     line-height: 1.75;
   }
