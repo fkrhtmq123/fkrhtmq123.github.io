@@ -1,1 +1,145 @@
-{% include _partial/archive.html %}
+{% assign title = lang.tags %}
+{% assign icon = 'tag' %}
+
+<div class="archive-title tags-modern-title">
+  <h2 class="{{ icon }}-icon"><span class='archive-folder'>{{ title }}</span></h2>
+  <div class="archiveslist archive-float clearfix tags-modern-index-wrap">
+    <ul class="archive-list tags-modern-index">
+      {% for tag in site.tags %}
+      <li class="archive-list-item">
+        <a class="archive-list-link" href="#tag-{{ tag[0] | slugify }}">{{ tag[0] }}</a>
+        <span class="archive-list-count">{{ tag[1] | size }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div id="main" class="archive-part clearfix tags-modern-main">
+  <div id="archive-page" class="tags-modern-content">
+    {% for tag in site.tags %}
+    <section id="tag-{{ tag[0] | slugify }}" class="tags-modern-card">
+      <header class="tags-modern-card-header">
+        <h2>{{ tag[0] }}</h2>
+        <span>{{ tag[1] | size }}</span>
+      </header>
+      <ul class="tags-modern-post-list">
+        {% for post in tag[1] %}
+        <li>
+          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  body.page-tags .tags-modern-title {
+    background: rgba(16, 24, 47, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+  }
+
+  body.page-tags .tags-modern-index-wrap {
+    margin-top: 10px;
+  }
+
+  body.page-tags .tags-modern-index {
+    display: grid;
+    gap: 8px;
+  }
+
+  body.page-tags .tags-modern-main {
+    margin-top: 2em;
+  }
+
+  body.page-tags .tags-modern-content {
+    display: grid;
+    gap: 12px;
+  }
+
+  body.page-tags .tags-modern-card {
+    background: rgba(16, 24, 47, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    padding: 14px;
+  }
+
+  body.page-tags .tags-modern-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  body.page-tags .tags-modern-card-header h2 {
+    margin: 0;
+    font-size: 1.06rem;
+    color: #ffffff;
+  }
+
+  body.page-tags .tags-modern-card-header span {
+    color: #94a3b8;
+    font-size: 0.85rem;
+  }
+
+  body.page-tags .tags-modern-post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  body.page-tags .tags-modern-post-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  }
+
+  body.page-tags .tags-modern-post-list li:hover {
+    transform: translateY(-3px);
+    border-color: rgba(139, 92, 246, 0.34);
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), rgba(255, 255, 255, 0.03));
+  }
+
+  body.page-tags .tags-modern-post-list li a {
+    color: #e2e8f0;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  body.page-tags .tags-modern-post-list li a:hover {
+    color: #c4b5fd;
+  }
+
+  body.page-tags .tags-modern-post-list li time {
+    color: #94a3b8;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    body.page-tags .tags-modern-main {
+      margin-top: 1em;
+    }
+
+    body.page-tags .tags-modern-post-list li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
