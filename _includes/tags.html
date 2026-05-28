@@ -163,6 +163,17 @@
 </script>
 
 <style>
+  body.page-tags {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.page-tags #container {
+    flex: 1;
+    background: #fafafa;
+  }
+
   body.page-tags .tags-modern-title {
     background: rgba(16, 24, 47, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -171,7 +182,11 @@
     backdrop-filter: blur(12px);
   }
 
-  body.page-tags .tags-modern-index-wrap { margin-top: 10px; }
+  body.page-tags .tags-modern-index-wrap {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   body.page-tags .tags-index-row {
     display: flex;
