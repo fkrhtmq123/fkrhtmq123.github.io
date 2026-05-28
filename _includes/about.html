@@ -1,0 +1,294 @@
+{% assign active_lang = page.lang | default: site.default_lang | default: site.language %}
+{% assign lang = site.data.languages[active_lang] %}
+
+<div id="main" class="about-modern-page">
+  <div class="about-modern-body">
+    <aside class="archive-title about-modern-title">
+      <h2 class="archive-icon"><span class="archive-folder">About</span></h2>
+
+      <div class="about-modern-intro">
+        {% if active_lang == 'jp' %}
+        <p>開発者のプロフィールページです。</p>
+        {% else %}
+        <p>개발자 프로필 페이지입니다.</p>
+        {% endif %}
+      </div>
+
+      <div class="archives-modern-nav">
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/{% else %}{{ site.baseurl }}/{% endif %}">Home</a>
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/archives/{% else %}{{ site.baseurl }}/archives/{% endif %}">Archives</a>
+        <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/tags/{% else %}{{ site.baseurl }}/tags/{% endif %}">Tags</a>
+      </div>
+
+      <div class="archives-modern-lang" aria-label="Language switcher">
+        <a class="nav-lang-link {% if active_lang != 'jp' %}active{% endif %}" href="{{ site.baseurl }}/about/" title="한국어 글 보기">KR</a>
+        <a class="nav-lang-link {% if active_lang == 'jp' %}active{% endif %}" href="{{ site.baseurl }}/jp/about/" title="日本語の投稿を見る">JP</a>
+      </div>
+
+      {% if site.goatcounter_url %}
+      <div class="about-modern-visitor-badge">
+        <span id="gc-about-visits"></span>
+      </div>
+      {% endif %}
+    </aside>
+
+    <section id="archive-page" class="archive-part about-modern-main about-modern-content">
+      <section class="about-modern-card">
+        <header class="about-modern-card-header">
+          <h2>{{ page.title | default: 'About me' }}</h2>
+        </header>
+        <div class="about-modern-card-body">
+          {{ content }}
+        </div>
+      </section>
+    </section>
+  </div>
+</div>
+
+<style>
+  body.page-about {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at top left, #16213b 0%, #0b1020 42%, #060814 100%);
+    color: #eef2ff;
+  }
+
+  body.page-about header {
+    background: rgba(16, 24, 47, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+    margin: 16px auto 0;
+    max-width: 1080px;
+    padding: 16px 18px;
+  }
+
+  body.page-about header nav { display: none; }
+
+  body.page-about header > div {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  body.page-about header #imglogo,
+  body.page-about header #textlogo {
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  body.page-about header #imglogo img {
+    display: block;
+    width: 88px;
+    height: 88px;
+    max-width: 88px;
+  }
+
+  body.page-about header #textlogo h1,
+  body.page-about header #textlogo h2 {
+    width: auto;
+    margin: 0;
+  }
+
+  body.page-about header #textlogo h1 { line-height: 1.12; }
+  body.page-about header #textlogo h2 { margin-top: 8px; }
+
+  body.page-about header .site-name a,
+  body.page-about header .blog-motto { color: #eef2ff; }
+
+  body.page-about #container {
+    flex: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 16px 20px 28px;
+    background: transparent;
+  }
+
+  body.page-about #main {
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+
+  body.page-about .about-modern-page { width: 100%; }
+
+  body.page-about .about-modern-body {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  body.page-about .archive-title,
+  body.page-about .archive-part {
+    float: none;
+    width: auto;
+    margin: 0 !important;
+  }
+
+  body.page-about .archive-title { padding: 16px 18px; }
+
+  body.page-about .about-modern-title {
+    position: sticky;
+    top: 18px;
+    background: rgba(16, 24, 47, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+  }
+
+  body.page-about .about-modern-intro {
+    margin: 10px 0 0;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  body.page-about .about-modern-intro p { margin: 0; }
+
+  body.page-about .archives-modern-nav {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  body.page-about .archives-modern-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-about .archives-modern-nav a:hover {
+    background: rgba(139, 92, 246, 0.16);
+    border-color: rgba(139, 92, 246, 0.35);
+    color: #ffffff;
+  }
+
+  body.page-about .archives-modern-lang {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  body.page-about .archives-modern-lang .nav-lang-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    flex: 1 1 0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: #dbeafe;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-about .archives-modern-lang .nav-lang-link:hover {
+    color: #ffffff;
+    border-color: rgba(96, 165, 250, 0.45);
+    background: rgba(96, 165, 250, 0.18);
+  }
+
+  body.page-about .archives-modern-lang .nav-lang-link.active {
+    color: #ffffff;
+    border-color: rgba(59, 130, 246, 0.55);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
+  }
+
+  body.page-about .about-modern-visitor-badge {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-about .about-modern-visitor-badge #gc-about-visits {
+    display: flex;
+    justify-content: center;
+  }
+
+  body.page-about .about-modern-main { margin-top: 0; }
+  body.page-about .about-modern-content { display: grid; gap: 12px; }
+
+  body.page-about .about-modern-card {
+    background: rgba(16, 24, 47, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    padding: 18px 20px;
+  }
+
+  body.page-about .about-modern-card-header {
+    margin-bottom: 10px;
+  }
+
+  body.page-about .about-modern-card-header h2 {
+    font-size: 1.15rem;
+    color: #ffffff;
+  }
+
+  body.page-about .about-modern-card-body {
+    color: #e2e8f0;
+    line-height: 1.75;
+    font-size: 0.95rem;
+  }
+
+  body.page-about .about-modern-card-body p { margin: 0 0 12px; }
+  body.page-about .about-modern-card-body p:last-child { margin-bottom: 0; }
+
+  body.page-about .about-modern-card-body a {
+    color: #38bdf8;
+    text-decoration: none;
+  }
+
+  body.page-about .about-modern-card-body a:hover {
+    color: #7dd3fc;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    body.page-about #container {
+      padding: 12px 12px 20px;
+    }
+
+    body.page-about header {
+      margin: 10px 12px 0;
+      border-radius: 18px;
+      padding: 14px 12px;
+    }
+
+    body.page-about .about-modern-body {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    body.page-about .about-modern-title {
+      position: static;
+      top: auto;
+    }
+
+    body.page-about .about-modern-main { margin-top: 0; }
+  }
+</style>
