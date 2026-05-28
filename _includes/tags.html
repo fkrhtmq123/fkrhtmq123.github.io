@@ -1,22 +1,51 @@
-{% assign title = lang.tags %}
-{% assign icon = 'tag' %}
+{% assign active_lang = page.lang | default: site.default_lang | default: site.language %}
+{% assign lang = site.data.languages[active_lang] %}
+{% assign scoped_posts = site.posts | where_exp: 'post', "post.lang == active_lang" %}
+
+{% assign tag_names_csv = '' %}
+{% for post in scoped_posts %}
+  {% for t in post.tags %}
+    {% assign tag_names_csv = tag_names_csv | append: t | append: '||' %}
+  {% endfor %}
+{% endfor %}
+{% assign tag_names = tag_names_csv | split: '||' | uniq | sort %}
 
 <div class="archive-title tags-modern-title">
-  <h2 class="{{ icon }}-icon"><span class='archive-folder'>{{ title }}</span></h2>
-  <div class="archiveslist archive-float clearfix tags-modern-index-wrap">
-    <ul class="archive-list tags-modern-index" id="tags-filter-list">
-      <li class="archive-list-item">
-        <a class="archive-list-link is-active" href="#" data-tag="__all__">All</a>
-        <span class="archive-list-count">{{ site.posts | size }}</span>
-      </li>
-      {% for tag in site.tags %}
-      <li class="archive-list-item">
-        <a class="archive-list-link" href="#tag-{{ tag[0] | slugify }}" data-tag="{{ tag[0] }}">{{ tag[0] }}</a>
-        <span class="archive-list-count">{{ tag[1] | size }}</span>
-      </li>
-      {% endfor %}
-    </ul>
+  <h2 class="tag-icon"><span class='archive-folder'>{{ lang.tags }}</span></h2>
+
+  <div class="archiveslist archive-float clearfix tags-modern-index-wrap" id="tags-filter-list">
+    <p class="tags-index-row">
+      <a class="archive-list-link is-active" href="#" data-tag="__all__">All</a>
+      <span class="archive-list-count">{{ scoped_posts | size }}</span>
+    </p>
+
+    {% for tag_name in tag_names %}
+      {% if tag_name != '' %}
+        {% assign tag_posts = scoped_posts | where_exp: 'post', "post.tags contains tag_name" %}
+        <p class="tags-index-row">
+          <a class="archive-list-link" href="#tag-{{ tag_name | slugify }}" data-tag="{{ tag_name }}">{{ tag_name }}</a>
+          <span class="archive-list-count">{{ tag_posts | size }}</span>
+        </p>
+      {% endif %}
+    {% endfor %}
   </div>
+
+  <div class="archives-modern-nav">
+    <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/{% else %}{{ site.baseurl }}/{% endif %}">Home</a>
+    <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/archives/{% else %}{{ site.baseurl }}/archives/{% endif %}">Archives</a>
+    <a href="{% if active_lang == 'jp' %}{{ site.baseurl }}/jp/about/{% else %}{{ site.baseurl }}/about/{% endif %}">About</a>
+  </div>
+
+  <div class="archives-modern-lang" aria-label="Language switcher">
+    <a class="nav-lang-link {% if active_lang != 'jp' %}active{% endif %}" href="{{ site.baseurl }}/tags/" title="한국어 글 보기">KR</a>
+    <a class="nav-lang-link {% if active_lang == 'jp' %}active{% endif %}" href="{{ site.baseurl }}/jp/tags/" title="日本語の投稿を見る">JP</a>
+  </div>
+
+  {% if site.goatcounter_url %}
+  <div class="tags-modern-visitor-badge">
+    <span id="gc-tags-visits"></span>
+  </div>
+  {% endif %}
 </div>
 
 <div id="main" class="archive-part clearfix tags-modern-main">
@@ -38,7 +67,7 @@
   var ALL_KEY = '__all__';
 
   var posts = [
-    {% for post in site.posts %}
+    {% for post in scoped_posts %}
     {
       title: {{ post.title | jsonify }},
       url: {{ (site.baseurl | append: post.url) | jsonify }},
@@ -49,10 +78,7 @@
     {% endfor %}
   ];
 
-  var state = {
-    currentTag: ALL_KEY,
-    currentPage: 1
-  };
+  var state = { currentTag: ALL_KEY, currentPage: 1 };
 
   var listEl = document.getElementById('tags-post-list');
   var pagerEl = document.getElementById('tags-pagination');
@@ -145,28 +171,101 @@
     backdrop-filter: blur(12px);
   }
 
-  body.page-tags .tags-modern-index-wrap {
-    margin-top: 10px;
-  }
+  body.page-tags .tags-modern-index-wrap { margin-top: 10px; }
 
-  body.page-tags .tags-modern-index {
-    display: grid;
+  body.page-tags .tags-index-row {
+    display: flex;
+    align-items: center;
     gap: 8px;
+    margin: 0 0 8px;
   }
 
-  body.page-tags .tags-modern-index .archive-list-link.is-active {
+  body.page-tags .tags-index-row:last-child { margin-bottom: 0; }
+
+  body.page-tags .archive-list-link.is-active {
     color: #ffffff;
     border-bottom: 1px solid rgba(96, 165, 250, 0.6);
   }
 
-  body.page-tags .tags-modern-main {
-    margin-top: 2em;
+  body.page-tags .archives-modern-nav {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  body.page-tags .tags-modern-content {
-    display: grid;
-    gap: 12px;
+  body.page-tags .archives-modern-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
+
+  body.page-tags .archives-modern-nav a:hover {
+    background: rgba(139, 92, 246, 0.16);
+    border-color: rgba(139, 92, 246, 0.35);
+    color: #ffffff;
+  }
+
+  body.page-tags .archives-modern-lang {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  body.page-tags .archives-modern-lang .nav-lang-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    flex: 1 1 0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    color: #dbeafe;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-tags .archives-modern-lang .nav-lang-link:hover {
+    color: #ffffff;
+    border-color: rgba(96, 165, 250, 0.45);
+    background: rgba(96, 165, 250, 0.18);
+  }
+
+  body.page-tags .archives-modern-lang .nav-lang-link.active {
+    color: #ffffff;
+    border-color: rgba(59, 130, 246, 0.55);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.52), rgba(14, 116, 144, 0.42));
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.32);
+  }
+
+  body.page-tags .tags-modern-visitor-badge {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body.page-tags .tags-modern-visitor-badge #gc-tags-visits {
+    display: flex;
+    justify-content: center;
+  }
+
+  body.page-tags .tags-modern-main { margin-top: 2em; }
+  body.page-tags .tags-modern-content { display: grid; gap: 12px; }
 
   body.page-tags .tags-modern-card {
     background: rgba(16, 24, 47, 0.82);
@@ -227,9 +326,7 @@
     overflow-wrap: anywhere;
   }
 
-  body.page-tags .tags-modern-post-list li a:hover {
-    color: #c4b5fd;
-  }
+  body.page-tags .tags-modern-post-list li a:hover { color: #c4b5fd; }
 
   body.page-tags .tags-modern-post-list li time {
     color: #94a3b8;
@@ -275,9 +372,7 @@
   }
 
   @media (max-width: 768px) {
-    body.page-tags .tags-modern-main {
-      margin-top: 1em;
-    }
+    body.page-tags .tags-modern-main { margin-top: 1em; }
 
     body.page-tags .tags-modern-post-list li {
       flex-direction: column;
