@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#060e22"/>
+  <text x="60" y="90" fill="#eef2ff" font-size="54" font-family="Arial, Helvetica, sans-serif">Multilingual Pagination/Language Fix Summary</text>
+
+  <rect x="60" y="120" width="700" height="700" rx="28" fill="#212940"/>
+  <rect x="840" y="120" width="700" height="700" rx="28" fill="#212940"/>
+  <text x="90" y="175" fill="#ff7b7b" font-size="46" font-family="Arial, Helvetica, sans-serif">Before</text>
+  <text x="870" y="175" fill="#7dffb0" font-size="46" font-family="Arial, Helvetica, sans-serif">After</text>
+
+  <text x="90" y="250" fill="#aab4c8" font-size="42" font-family="Arial, Helvetica, sans-serif">Condition: total_posts &gt; 1</text>
+  <text x="90" y="305" fill="#aab4c8" font-size="42" font-family="Arial, Helvetica, sans-serif">posts_per_page = 5</text>
+  <text x="90" y="360" fill="#aab4c8" font-size="42" font-family="Arial, Helvetica, sans-serif">Home language link not explicit</text>
+  <text x="90" y="610" fill="#ff7b7b" font-size="44" font-family="Arial, Helvetica, sans-serif">Result: JP footer/spacing looked odd</text>
+
+  <text x="870" y="250" fill="#aab4c8" font-size="42" font-family="Arial, Helvetica, sans-serif">Condition: total_pages &gt; 1</text>
+  <text x="870" y="305" fill="#aab4c8" font-size="42" font-family="Arial, Helvetica, sans-serif">posts_per_page = site.paginate</text>
+  <text x="870" y="360" fill="#aab4c8" font-size="42" font-family="Arial, Helvetica, sans-serif">/: JP -&gt; /jp/ , /jp/: KR -&gt; /</text>
+  <text x="870" y="610" fill="#7dffb0" font-size="44" font-family="Arial, Helvetica, sans-serif">Result: KR/JP layout and switch fixed</text>
+
+  <line x1="760" y1="470" x2="840" y2="470" stroke="#6eaaff" stroke-width="8"/>
+</svg>
