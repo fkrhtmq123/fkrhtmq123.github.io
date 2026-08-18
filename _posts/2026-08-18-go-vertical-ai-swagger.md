@@ -272,7 +272,7 @@ go run main.go
 ```
 서버가 정상적으로 동작하면 콘솔 창에 MongoDB 연결 로그, 인덱싱 완료 트리거 및 Gin의 엔드포인트 할당 이정표가 출력됩니다.
 
-![Go API 서버 실행 및 MongoDB 저장 로그](/assets/img/posts/2026-08-18-go-vertical-ai-swagger/vertical-swagger-03-kr.png)
+![Go API 서버 실행 및 MongoDB 저장 로그](/assets/img/posts/2026-08-18-go-vertical-ai-swagger/vertical-swagger-03-kr.png?v=2cf81f8)
 
 *서버 실행 후 Swagger 라우팅, `domain` 인덱스 생성, MongoDB 저장 및 API `200` 응답이 정상적으로 처리된 로그입니다.*
 
